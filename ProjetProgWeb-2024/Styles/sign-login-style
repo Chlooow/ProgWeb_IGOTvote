@@ -1,0 +1,4 @@
+.custom-btn {
+    max-width: 340px; /* Définir la largeur maximale du bouton */
+    width: 200%; /* Le bouton occupe 100% de la largeur disponible */
+}
