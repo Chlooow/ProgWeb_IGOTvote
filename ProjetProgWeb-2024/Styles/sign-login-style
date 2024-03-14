@@ -2,3 +2,12 @@
     max-width: 340px; /* Définir la largeur maximale du bouton */
     width: 200%; /* Le bouton occupe 100% de la largeur disponible */
 }
+
+.background-image {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url('https://altselection.com/wp-content/uploads/2022/06/220524-MPD-Twitter-Update-GOT7-NANANA-Relay-Dance-Behind-The-Scenes-documents-1.jpeg');
+    border: 1px solid #666;
+    height: 10em;
+  }
