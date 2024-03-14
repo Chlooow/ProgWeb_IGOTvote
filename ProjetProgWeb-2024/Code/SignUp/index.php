@@ -75,7 +75,7 @@
                 <div class="row">
                     <div class="col-lg-4 offset-lg-4 bg-light rounded" id="register-box">
                         <h2 class="text-center mt-2">S I G N U P</h2>
-                        <form action="" method="post" role="form" class="p-2" id="register-frm">
+                        <!--<form action="add_user.php" method="post" role="form" class="p-2" id="register-frm">-->
                             <div class="form-group">
                                 <input type="text" name="name" class="form-control mb-2" placeholder="full name" required autocomplete="on">
                             </div>
@@ -104,7 +104,7 @@
                             </div>
                             <div class="for-group">
                                 <div class="form-group text-center">
-                                    <input type="submit" class="btn btn-darkgreen btn-block btn-success mt-3 mb-3" name="sign up" value="Sign up">
+                                    <button class="btn btn-success"onclick="console.log('fff');signup()">sign Up</button>
                                 </div>
                                 <div class="form-group">
                                     <p class=" text-center" > Already IGOT7 ? 
@@ -112,7 +112,7 @@
                                     </p>
                                 </div>
                             </div>
-                        </form>
+                       <!-- </form>-->
                     </div>
                 </div>
             </div>

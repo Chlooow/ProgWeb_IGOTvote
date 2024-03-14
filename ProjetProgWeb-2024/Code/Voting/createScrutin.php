@@ -12,35 +12,28 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
     <script src="login.js"></script> <!-- Lien vers votre fichier JavaScript -->
-  
 
     <style>
         body {
             background-color: lightgreen; /* Change la couleur de fond en vert */
         }
     </style>
-    <style type= "text/css">
-        #alert, #register-box
-        { display: none; }
-    </style>
 </head>
 
 <!-- BACKGROUND -->
-<body class="bg-lightgreen">
-    <div class="container">
-        <div class="row">
-        <main>
-            <div class="py-5 text-center bg-light rounded">
-                <img class="d-block mx-auto mb-4" src="\ProjetProgWeb-2024\Assets\Ahgalogo.svg" alt="" width="72" height="57">
-                <h2> Que voulez-vous faire ? </h2>
-                <div class="d-grid gap-2 col-6 mx-auto">
-                    
-                        <a href="/ProjetProgWeb-2024/Code/Voting/createScrutin.php" class="btn btn-success" type="button">Créer un scrutin</a>
-                    
-                    <button class="btn btn-success" type="button" disabled>Voter</button>
-                </div>
+<body style="background-image: url('https://altselection.com/wp-content/uploads/2022/06/220524-MPD-Twitter-Update-GOT7-NANANA-Relay-Dance-Behind-The-Scenes-documents-1.jpeg'); background-size: cover; background-opacity: 0.5; background-repeat: repeat;">
 
-            </div>
-        </div>
-    </body>
-    </html>
+<div class="row">
+    <div class="col-lg-4 offset-lg-4 bg-light rounded offset-lt-4 mt-4" id="Creation-scrutin">
+        <h2 class="text-center mt-2">CREATION D'UN SCRUTIN</h2> 
+        <form action="" method="post" role="form" class="p-2" id="Creation-scrutin-frm">
+            <div class="form-group">
+                <input type="text" name="Titre" class="form-control mb-2" placeholder="Titre" required autocomplete="on">
+    </div>  
+        
+</div>
+
+
+
+</body>
+</html>
