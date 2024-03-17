@@ -16,6 +16,13 @@
 
 <a href="../SignUp/pageChoix.php" class="btn btn-sucess btn-secondary mt-2 d-block mx-auto" style="position: absolute; top: 0; left: 10px;">Back</a>
 
+<!-- Boutons sur le côté droit -->
+<div class="position-fixed top-100 end-0 translate-middle-y">
+    <button class="btn btn-success mb-4" id="createScrutin" disabled>Créer le scrutin</button><br>
+    <button class="btn btn-success mb-4" id="closeScrutin" disabled>Fermer le scrutin</button><br>
+    <button class="btn btn-success mb-4" id="viewResults" disabled>Voir les Résultats</button><br>
+</div>
+
 <!-- ALERTE -->
 <div class="container mt-4">
     <div class="row">
@@ -90,6 +97,7 @@
                 $("#optionsContainer").append(optionTilte);
                 $("#optionsContainer").append(optionInput);
             }
+            $("#optionsContainer").append('<button class="btn btn-primary btn-success" id="startOptions">valider les options </button>');
 
             // Afficher la div optionsContainer une fois que les options sont générées
             $("#optionsContainer").show();
@@ -98,6 +106,38 @@
         }
     }
 </script>
+
+<!-- Les participants -->
+<div class="row mt-4">
+            <div class="col-lg-4 offset-lg-4 bg-light rounded" id="optionsContainer">
+                <h5>Liste des personnes participant au scrutin </h5>
+                <div>
+                    <label for="">Personnes ayant un compte sur Aghavote</label>
+                    <select name="participants[]" multiple class="form-control" id="userSelect">
+                        <!-- les inscrits à AghaVote -->
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <script>
+    $(document).ready(function() {
+
+        // Chargement du fichier JSON
+        $.getJSON("../../Datas/Login-data.JSON", function(data) {
+            var users = data.utilisateurs;
+            var select = $("#userSelect");
+            
+            // Ajout des options au menu déroulant
+            $.each(users, function(index, user) {
+                var option = $("<option></option>").attr("value", user["Username "]).text(user["Username "]);
+                select.append(option);
+            });
+        });
+    });
+</script>
+
+
 
 </body>
 </html>
