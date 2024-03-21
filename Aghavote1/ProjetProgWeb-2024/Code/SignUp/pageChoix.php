@@ -40,7 +40,7 @@
                         <a href="/ProjetProgWeb-2024/Code/Voting/createScrutin.php" class="btn btn-success" type="button">Créer un scrutin</a>
                         <button class="btn btn-success" type="button" disabled>Gerer un scrutin deja existant</button>
                     <button class="btn btn-success" type="button" disabled>Voter</button>
-                    <a href="logout.php" class="btn btn-success" type="button">Deconnexion
+                    <a onclick="logout()" class="btn btn-success" type="button">Deconnexion
                     </a>
                 </div>
 

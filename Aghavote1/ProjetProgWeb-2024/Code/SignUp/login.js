@@ -56,6 +56,8 @@
     });
 }*/
 
+// Fonction de connexion
+
 function login() {
     // Gérer la soumission du formulaire de connexion
     /*$("#login-frm").submit(function(event) {
@@ -98,6 +100,7 @@ function login() {
         });
 }
 
+// fonction de sign up
 
 function signup() {
         // Gérer la soumission du formulaire de sign up
@@ -141,6 +144,35 @@ function signup() {
 
             // Réinitialiser le formulaire
             $("#register-frm")[0].reset();
+    }
+
+
+    // Fonction de déconnexion
+
+    function logout() {
+        // Gérer la soumission du formulaire de connexion
+        /*$("#login-frm").submit(function(event) {
+            event.preventDefault();*/
+    console.log("logout");
+            // Envoyer la requête AJAX
+            $.ajax({
+                type: "POST",
+                url: "logout.php", // URL de votre script de connexion PHP
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                 },
+                success: function(response) {
+ 
+                    console.log(response);
+                        // Rediriger vers une autre page en cas de succès
+                        //window.location.href = "login.php";
+                        // Afficher un message d'erreur si les informations sont incorrectes
+                },
+                error: function() {
+                    // Gérer les erreurs de la requête AJAX
+                    alert("Une erreur s'est produite lors de la déconnexion.");
+                }
+            });
     }
 
     var utilisateurs;
