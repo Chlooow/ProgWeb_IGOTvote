@@ -1,0 +1,19 @@
+[
+    {
+        "numScrutin": "012409",
+        "organisateur": "BamBam1a",
+        "titre": "Concert GOT7",
+        "question": "Voulez-vous que GOT7 reviennent en france ?",
+        "options": [
+            "Oui",
+            "Non"
+        ],
+        "participants": [
+            "Kyum"
+        ],
+        "votants": null,
+        "dateDebut": "2024-03-28",
+        "dateFin": "2024-03-29",
+        "alreadyVoted": null
+    }
+]
