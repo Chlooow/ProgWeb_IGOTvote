@@ -1,44 +1,19 @@
 [
     {
-        "numScrutin": "154047",
-        "titre": "d",
+        "numScrutin": "012409",
+        "organisateur": "BamBam1a",
+        "titre": "Concert GOT7",
         "question": "Voulez-vous que GOT7 reviennent en france ?",
         "options": [
-            "d",
-            "d"
+            "Oui",
+            "Non"
         ],
         "participants": [
-            "333cyj333",
-            "Jaybnow.hr",
             "Kyum"
         ],
         "votants": null,
-        "dateDebut": "",
-        "dateFin": "",
-        "alreadyVoted": null
-    },
-    {
-        "numScrutin": "161508",
-        "titre": "",
-        "question": "",
-        "options": null,
-        "participants": null,
-        "votants": null,
-        "dateDebut": "",
-        "dateFin": "",
-        "alreadyVoted": null
-    },
-    {
-        "numScrutin": "225015",
-        "titre": "",
-        "question": "",
-        "options": null,
-        "participants": [
-            "MarkTuan"
-        ],
-        "votants": null,
-        "dateDebut": "",
-        "dateFin": "",
+        "dateDebut": "2024-03-28",
+        "dateFin": "2024-03-29",
         "alreadyVoted": null
     }
 ]

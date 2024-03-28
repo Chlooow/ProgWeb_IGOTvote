@@ -35,6 +35,7 @@ $(document).ready(function() {
 function createScrutin() {
     // Récupérer les données du formulaire
     var numScrutin = $("#numScrutin").val();
+    var organisation = $("input[name='Organisation']").val();
     var titre = $("input[name='Titre']").val();
     var question = $("input[name='Question']").val();
     var nbOptions = $("#nbOptions").val();
@@ -54,6 +55,7 @@ function createScrutin() {
         method: 'POST',
         data: {
             numScrutin: numScrutin,
+            organisation: organisation,
             titre: titre,
             question: question,
             options: options,

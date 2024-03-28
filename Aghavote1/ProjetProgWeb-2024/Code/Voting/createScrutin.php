@@ -47,12 +47,25 @@ function generate_scrutin_number() {
 }
 ?>
 
+
+<!-- ID du scrutin -->
 <div class="container mt-4">
     <div class="row">
         <div class="col-lg-4 offset-lg-4" id="alert">
             <!-- Numéro de scrutin -->
             <label for="numScrutin" style="color: white;">Numéro de scrutin</label>
             <input type="text" name="numScrutin" id="numScrutin" class="form-control" readonly value="<?php echo generate_scrutin_number(); ?>">
+        </div>
+    </div>
+</div>
+
+<!-- Nom de l'organisateur -->
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-4 offset-lg-4" id="alert">
+            <!-- Nom de l'organisateur -->
+            <label for="organisateur" style="color: white;">Nom de l'organisateur</label>
+            <input type="text" name="organisateur" id="organisateur" class="form-control" readonly value="<?php session_start(); echo $_SESSION['username']; ?>">
         </div>
     </div>
 </div>

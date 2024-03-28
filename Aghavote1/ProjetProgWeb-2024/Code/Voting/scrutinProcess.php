@@ -1,9 +1,11 @@
 <?php
+session_start();
 header('Content-Type: application/json');
 // Vérifier si la requête est une requête AJAX
 if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
     // Récupérer les données du formulaire
     $numScrutin = $_POST['numScrutin'];
+    $organisateur = $_SESSION['username'];
     $titre = $_POST['titre'];
     $question = $_POST['question'];
     $options = $_POST['options'];
@@ -16,6 +18,7 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
     // Créer un tableau avec les données du scrutin
     $scrutin = array(
         'numScrutin' => $numScrutin,
+        'organisateur' => $organisateur,
         'titre' => $titre,
         'question' => $question,
         'options' => $options,
