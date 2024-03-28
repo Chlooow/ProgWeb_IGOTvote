@@ -83,3 +83,34 @@ $(document).ready(function() {
        //createScrutin();
     });
 //});
+
+// ----------- détruire les scrutins ----------------
+
+function destroyScrutin() {
+    $.getJSON("Scrutins/Scrutins.json", function(data) {
+        // Supprimer la dernière entrée du tableau
+        data.pop();
+        
+        // Enregistrer les modifications dans le fichier JSON
+        $.ajax({
+            url: 'Scrutins.json',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            success: function(response) {
+                console.log('Les données du scrutin ont été supprimées avec succès.');
+            },
+            error: function(xhr, status, error) {
+                console.error('Erreur lors de la suppression des données du scrutin : ' + error);
+            }
+        });
+    });
+}
+
+// Associer la fonction au clic du bouton "Detruire le Scrutin"
+$(document).ready(function() {
+    //$('#destroyscrutin').click(function() {
+        //destroyScrutin();
+    });
+//});
+

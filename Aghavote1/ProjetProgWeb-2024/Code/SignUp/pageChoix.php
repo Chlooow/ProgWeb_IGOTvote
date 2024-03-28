@@ -39,7 +39,8 @@
                     
                         <a href="/ProjetProgWeb-2024/Code/Voting/createScrutin.php" class="btn btn-success" type="button">Créer un scrutin</a>
                         <button class="btn btn-success" type="button" disabled>Gerer un scrutin deja existant</button>
-                    <button class="btn btn-success" type="button" disabled>Voter</button>
+                        <!--<a href="/ProjetProgWeb-2024/Code/Voting/votingPage.php" class="btn btn-success" type="button" <?php //echo $_SESSION['count'] > 0 ? '' : 'disabled'; echo $count; ?>>Voter</a> -->
+                        <a href="/ProjetProgWeb-2024/Code/Voting/votingPage.php" class="btn btn-success" type="button" <?php echo $userParticipates ? '' : 'disabled'; ?>>Voter</a>
                     <a onclick="logout()" class="btn btn-success" type="button">Deconnexion
                     </a>
                 </div>

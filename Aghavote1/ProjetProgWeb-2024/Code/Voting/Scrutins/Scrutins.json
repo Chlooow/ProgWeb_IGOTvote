@@ -1,0 +1,44 @@
+[
+    {
+        "numScrutin": "154047",
+        "titre": "d",
+        "question": "Voulez-vous que GOT7 reviennent en france ?",
+        "options": [
+            "d",
+            "d"
+        ],
+        "participants": [
+            "333cyj333",
+            "Jaybnow.hr",
+            "Kyum"
+        ],
+        "votants": null,
+        "dateDebut": "",
+        "dateFin": "",
+        "alreadyVoted": null
+    },
+    {
+        "numScrutin": "161508",
+        "titre": "",
+        "question": "",
+        "options": null,
+        "participants": null,
+        "votants": null,
+        "dateDebut": "",
+        "dateFin": "",
+        "alreadyVoted": null
+    },
+    {
+        "numScrutin": "225015",
+        "titre": "",
+        "question": "",
+        "options": null,
+        "participants": [
+            "MarkTuan"
+        ],
+        "votants": null,
+        "dateDebut": "",
+        "dateFin": "",
+        "alreadyVoted": null
+    }
+]

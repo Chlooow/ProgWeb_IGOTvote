@@ -21,7 +21,7 @@
     <button class="btn btn-success mb-4" id="createScrutin" onclick="console.log('scrutinnnnnnnnn'); createScrutin();">Créer le scrutin</button><br>
     <button class="btn btn-success mb-4" id="closeScrutin" disabled>Fermer le scrutin</button><br>
     <button class="btn btn-success mb-4" id="viewResults" disabled>Voir les Résultats</button><br>
-    <button class="btn btn-success mb-4" id="destroyscrutin" disabled>Detruire le Scrutin</button><br>
+    <button class="btn btn-success mb-4" id="destroyscrutin" data-id="" onclick="console.log('scrutinnnnnnnnn');destroyScrutin();">Detruire le Scrutin</button><br>
 </div>
 
 <!-- ALERTE -->

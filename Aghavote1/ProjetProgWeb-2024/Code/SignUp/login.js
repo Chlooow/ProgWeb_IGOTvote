@@ -80,6 +80,8 @@ function login() {
             data: data,
             headers: {
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                /*Imagine you have a form on a website where users can enter their username and password to log in. Without a CSRF token, 
+                someone could create a form on another website that automatically submits a login request to your site when someone visits it*/
              },
             success: function(response) {
 
@@ -165,7 +167,7 @@ function signup() {
  
                     console.log(response);
                         // Rediriger vers une autre page en cas de succès
-                        //window.location.href = "login.php";
+                         window.location.href = "index.php";
                         // Afficher un message d'erreur si les informations sont incorrectes
                 },
                 error: function() {
@@ -173,6 +175,20 @@ function signup() {
                     alert("Une erreur s'est produite lors de la déconnexion.");
                 }
             });
+    }
+
+
+    // fonction de récupération du statut votant de l'utilisateur
+
+    /* On va chercher dans la base de données Scrutins.json et regarder dans le tableau 
+       participants si l'utilisateur est un votant ou non et combien de fois il est présent
+       si oui, alors on lui affiche les numéros des scrutins auxquels il peut voter
+       il cliquera sur le numéro du scrutin pour voter où il y a aussi le titre du scrutin
+       sinon, le bouton de vote est désactivé dans pageChoix.php
+    */
+
+    function getScrutin() {
+
     }
 
     var utilisateurs;
