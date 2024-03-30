@@ -55,12 +55,23 @@
         if (in_array($username, $scrutin['participants'])) {
             // L'utilisateur est présent dans ce scrutin
             $count++;
-            // Pas besoin de vérifier d'autres scrutins, donc sortir de la boucle
+            
+            // récupérer le scrutin, le titre et l'organisateur
+        $scrutins[] = [
+            'numScrutin' => $scrutin['numScrutin'],
+            'titre' => $scrutin['title'],
+            'organisateur' => $scrutin['organizer'],
+            'question' => $scrutin['question'],
+            'options' => $scrutin['options']
+        ];
         }
     }
 
-    // Stocker le compteur dans une variable de session
+// Stocker le compteur dans une variable de session
 $_SESSION['count'] = $count;
+
+// Envoyer le nombre de scrutins dans la réponse
+$_SESSION['scrutins'] = $scrutins;
 
 echo $count;
 
