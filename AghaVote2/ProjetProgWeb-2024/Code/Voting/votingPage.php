@@ -57,24 +57,63 @@
                     <!--<form id="form" action="vote.php" method="POST">-->
                         <div class="form-group">
                             <label for="choix">Voici les scrutins pour Lequel(lesquels) vous pouvez voter</label>
-                                <select class="form-select" id="choix" name="choix">
+                                <select class="form-select" id="choix-scrutin" name="choix">
 
-                                <?php foreach ($_SESSION['scrutins'] as $scrutin): ?>
-                                <option value="<?php echo $scrutin['numScrutin']; ?>">
-
-                                <?php echo "Numéro du scrutin : " . $scrutin['numScrutin']; ?>
-                                </option>
-                                
-                            <?php endforeach; ?>
+                                    <?php foreach ($_SESSION['scrutins'] as $scrutin): ?>
+                                        <option value="<?php echo $scrutin['numScrutin']; ?>">
+                                        <?php echo "Numéro du scrutin : " . $scrutin['numScrutin']; ?>
+                                    </option>
+                                    <?php endforeach; ?>
                                 </select>
                         </div>
-                        <button type="submit" class="btn btn-success" id="letsvote">Voter</button>
+                        <button type="submit" class="btn btn-success" id="letsvote" onclick="handleSelectChange();">Voter</button>
                     <!--</form>-->
                 </div>
             </div>
         </main>
     </div>
 </div>
+
+<script>
+    function handleSelectChange() {
+    var selectedScrutinId = $("#choix-scrutin").val();
+    console.log("Selected value:", selectedScrutinId);
+
+    // Assuming your scrutins data is stored in a PHP array called $scrutinsData
+    var scrutinsData = <?php echo json_encode($_SESSION['scrutins']); ?>;
+    console.log("Scrutins data:", scrutinsData);
+
+    // Find the scrutin object with the selected ID from the session data
+    var selectedScrutin = scrutinsData.find(function(scrutin) {
+        return scrutin.numScrutin === selectedScrutinId;
+    });
+    console.log("Selected scrutin:", selectedScrutin);
+
+    // Display the scrutin information
+    if (selectedScrutin && selectedScrutin.options) {
+        console.log("Selected scrutin:", selectedScrutin);
+        // Update the HTML elements to display scrutin information
+        $("#voting-box").show();
+        $("#choosingS-box").hide();
+        $("#alert").hide();
+
+        $("#selected-scrutin-num").text(selectedScrutin.numScrutin);
+        $("#selected-scrutin-title").text(selectedScrutin.titre);
+        $("#selected-scrutin-organisateur").text(selectedScrutin.organisateur);
+        $("#selected-scrutin-question").text(selectedScrutin.question);
+
+        // Update the options in the select element
+        var optionsHtml = "";
+        selectedScrutin.options.forEach(function(option, index) {
+            optionsHtml += "<option value='" + index + "'>" + option + "</option>";
+        });
+        $("#choix").html(optionsHtml);
+    } else {
+        console.log("Selected scrutin not found or doesn't have options.");
+    }
+}
+
+</script>
 
 <!-- script pour afficher la boite de vote et faire disparaitre celle de choix de scrutin-->
 <script type= "text/javascript">
@@ -101,11 +140,16 @@
             <div class="py-5 text-center bg-light rounded" id="voting-box">
             <button type="submit" class="btn btn-success mb-4" id="backtoscrutin">Back</button>
                 <img class="d-block mx-auto mb-4" src="\ProjetProgWeb-2024\Assets\Ahgalogo.svg" alt="" width="72" height="57">
+
+                <!-- Use PHP to echo the scrutin information -->
+                <?php if (isset($selectedScrutin)): ?>
                 
                 <h2> Scrutin N° <?php echo $selectedScrutin['numScrutin']; ?> </h2>
                 <h3><?php echo $selectedScrutin['titre']; ?></h3>
                 <p>Organisateur: <?php echo $selectedScrutin['organisateur']; ?></p> <!-- Display organizer name -->
-                    <p>Question: <?php echo $selectedScrutin['question']; ?></p>
+                <p>Question: <?php echo $selectedScrutin['question']; ?></p>
+                <?php endif; ?>
+
                 <div class="d-grid gap col-6 mx-auto">
                     <!--<form id="form" action="vote.php" method="POST">-->
                     <label for="choix" class="col-sm-2 col-form-label"> Options de vote </label>
@@ -122,18 +166,18 @@
                             </div>
                         </div>
                         <button type="submit" class="btn btn-success">Voter</button>
-                    <!--</form>
+                    <!--</form>-->
     </div>
 </div>
 
 <!-- Script pour afficher le scrutin sélectionné -->
 <script>
-    $(document).ready(function() {
+    /*$(document).ready(function() {
         $('#choix').change(function() {
             var selectedScrutin = $(this).val();
             $('h2').text('Scrutin N° ' + selectedScrutin);
         });
-    });
+    });*/
 </script>
 
 </body>

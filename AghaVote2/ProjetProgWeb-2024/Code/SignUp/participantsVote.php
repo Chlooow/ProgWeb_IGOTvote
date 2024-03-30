@@ -59,8 +59,8 @@
             // récupérer le scrutin, le titre et l'organisateur
         $scrutins[] = [
             'numScrutin' => $scrutin['numScrutin'],
-            'titre' => $scrutin['title'],
-            'organisateur' => $scrutin['organizer'],
+            'titre' => $scrutin['titre'],
+            'organisateur' => $scrutin['organisateur'],
             'question' => $scrutin['question'],
             'options' => $scrutin['options']
         ];
