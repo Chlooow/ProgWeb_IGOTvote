@@ -187,8 +187,29 @@ function signup() {
        sinon, le bouton de vote est désactivé dans pageChoix.php
     */
 
+       // Fonction de récupération du statut votant de l'utilisateur
     function getScrutin() {
-
+        // Sélectionnez le bouton
+        var button = $("button[name=btnvote]");
+        // Faites l'appel AJAX
+        $.ajax({
+            url: 'participantsVote.php',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                console.log(data)
+                // Si l'utilisateur ne participe pas, désactivez le bouton
+                if (data==0) {
+                    console.log(data)
+                    button.prop('disabled', true);
+                } else {
+                    button.prop('disabled', false);
+                }
+            },
+            error: function(error) {
+                console.error('Erreur:', error);
+            }
+        });
     }
 
     var utilisateurs;

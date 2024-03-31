@@ -1,4 +1,3 @@
-
 <?php session_start();?>
 
 <!doctype html>
@@ -31,7 +30,7 @@
         <main>
             <div class="py-5 text-center bg-light rounded">
                 <img class="d-block mx-auto mb-4" src="\ProjetProgWeb-2024\Assets\Ahgalogo.svg" alt="" width="72" height="57">
-                <h2> Bienvenue sur AghaVote </h2>
+                <h2> Bienvenue sur IGOTVote </h2>
                 <h2> Qu'est-ce que vous voulez faire 
                     <?php
                         echo isset($_SESSION['username']) ? $_SESSION['username'] : ''; ?> ? </h2>
@@ -39,13 +38,31 @@
                     
                         <a href="/ProjetProgWeb-2024/Code/Voting/createScrutin.php" class="btn btn-success" type="button">Créer un scrutin</a>
                         <button class="btn btn-success" type="button" disabled>Gerer un scrutin deja existant</button>
-                        <!--<a href="/ProjetProgWeb-2024/Code/Voting/votingPage.php" class="btn btn-success" type="button" <?php //echo $_SESSION['count'] > 0 ? '' : 'disabled'; echo $count; ?>>Voter</a> -->
-                        <a href="/ProjetProgWeb-2024/Code/Voting/votingPage.php" class="btn btn-success" type="button" <?php echo $userParticipates ? '' : 'disabled'; ?>>Voter</a>
-                    <a onclick="logout()" class="btn btn-success" type="button">Deconnexion
-                    </a>
+                        <!-- Vérifier si l'utilisateur peut voter -->
+
+                        <button class="btn btn-success" name="btnvote" onclick="redirectToVotingPage();" type="button" > Voter </button>
+
+                        <script>
+                            function redirectToVotingPage() {
+                                window.location.href = "/ProjetProgWeb-2024/Code/Voting/votingPage.php";
+                            }   
+                        </script>
+
+                        <script>
+                            $(document).ready(function() {
+                                console.log("Redirecting to voting page...");
+                                getScrutin();
+                                console.log("Redirected to voting page");
+                            });
+                                </script>
+                        
+                        <!-- deconnexion -->
+                    <a onclick="logout()" class="btn btn-success" type="button">Deconnexion</a>
                 </div>
 
             </div>
         </div>
+        <footer class="footer /* Couleur du texte */">© Chloe Makoundou Projet ProgWeb 2023-2024</footer>
     </body>
+    
     </html>
