@@ -35,3 +35,12 @@ here's my Json :
 and here's my code that supposed to do the work "votingPage.php"
 
 "participantsVote.php" contains the php to the ajax request
+
+le code qui fait défaut en particulier :
+
+```php
+<h2> Scrutin N° <?php echo $selectedScrutin['numScrutin']; ?> </h2>
+                <h3> <?php echo $selectedScrutin['titre']; ?> </h3>
+                <p> Organisateur: <?php echo $selectedScrutin['organisateur']; ?></p> 
+                <p> Question: <?php echo $selectedScrutin['question']; ?></p>
+```
