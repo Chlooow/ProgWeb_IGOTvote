@@ -6,7 +6,7 @@ https://codimd.math.cnrs.fr/__PaSu03RrucOY4oneaw0Q?edit
 
 ## Pourcentage
 
-> [40%]
+> [60%]
 
 ### Page d'accueil
 
@@ -26,19 +26,19 @@ https://codimd.math.cnrs.fr/__PaSu03RrucOY4oneaw0Q?edit
 - [x] Confirm password
 - [x] deja un compte ? login
 - [x] bouton sign up
-- [ ] e-mail
+- [x] e-mail
 - [x] le compte crée existe deja
 - [x] json des inscrits
 
 ### Que voulez-vous faire
 - [x] Crée un scrutin
 - [ ] Gérer un scrutin existant
-- [ ] voter
+- [x] voter
 - [x] deconnexion
 
 ### Crée un scrutin
 - [x] Numéro du scrutin
-- [ ] L'organisateur
+- [x] L'organisateur
 - [x] titre
 - [x] question
 - [x] options
@@ -59,15 +59,24 @@ https://codimd.math.cnrs.fr/__PaSu03RrucOY4oneaw0Q?edit
 - [ ] gérer un scrutin existant
 
 ### page de voting
-- [ ] Crée un scrutin
-- [ ] Gérer un scrutin existant
-- [ ] voter
-- [ ] deconnexion
+- [ ] Voter
+- [ ] transmettre les résultats
+- [ ] Encrypter les votes
+- [x] retourner en arrière
 
 ### Bonus page de procuration
 - [ ] liste des personnes ayant un compte
 - [ ] la personne qui donne procuration
 - [ ] je donne la procuration à...
+________
+
+### A FAIRE 28/03
+- [ ] Détruire un scrutin -> marche pas
+- [ ] fermer un scrutin
+- [ ] procuration
+- [ ] Gerer un scrutin existant
+- [x] bouton voter en fonction des users -> ne marche pas
+- [x] donner le nom de l'organisateur dans le JSON
 ________
 
 ### Cahier des charges du prof
