@@ -50,7 +50,7 @@
                         <script>
                             $(document).ready(function() {
                                 console.log("Redirecting to managing page...");
-                                getScrutin();
+                                getScrutinToManage();
                                 console.log("Redirected to managing page");
                             });
                                 </script>

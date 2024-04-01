@@ -12,14 +12,16 @@
 
     $isOrganisateur = false;
     $dd="";
+    $count = 0;
 
     // Parcourir chaque scrutin
     foreach ($data as $i=>$scrutin) {
         $dd .= $json;
         // Vérifier si l'utilisateur est organisateur
-        if (in_array($username, $scrutin['organisateur'])) {
-            // L'utilisateur est présent dans ce scrutin
+        if ($username === $scrutin['organisateur']) {
+            // L'utilisateur est organisateur
             $isOrganisateur = true;
+            $count++;
             
             // récupérer le scrutin, le titre et l'organisateur
         $scrutins[] = [
@@ -37,8 +39,9 @@
         }
     }
 
-// Stocker le compteur dans une variable de session
 $_SESSION['organisateur'] = $isOrganisateur;
+
+$_SESSION['count'] = $count;
 
 // Envoyer le nombre de scrutins dans la réponse
 $_SESSION['scrutins'] = $scrutins;
