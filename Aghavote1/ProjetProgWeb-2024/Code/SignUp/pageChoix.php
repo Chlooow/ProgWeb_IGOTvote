@@ -37,9 +37,26 @@
                 <div class="d-grid gap-2 col-6 mx-auto">
                     
                         <a href="/ProjetProgWeb-2024/Code/Voting/createScrutin.php" class="btn btn-success" type="button">Créer un scrutin</a>
-                        <button class="btn btn-success" type="button" disabled>Gerer un scrutin deja existant</button>
-                        <!-- Vérifier si l'utilisateur peut voter -->
 
+                        <!-- Vérifier si l'utilisateur peut gérer un scrutin -->
+                        <button class="btn btn-success" type="button" name="button-manage" onclick="redirectToManage();">Gerer un scrutin deja existant</button>
+
+                        <script>
+                            function redirectToManage() {
+                                window.location.href = "/ProjetProgWeb-2024/Code/Voting/gererScrutin.php";
+                            }   
+                        </script>
+
+                        <script>
+                            $(document).ready(function() {
+                                console.log("Redirecting to managing page...");
+                                getScrutin();
+                                console.log("Redirected to managing page");
+                            });
+                                </script>
+
+                        
+                        <!-- Vérifier si l'utilisateur peut voter -->
                         <button class="btn btn-success" name="btnvote" onclick="redirectToVotingPage();" type="button" > Voter </button>
 
                         <script>

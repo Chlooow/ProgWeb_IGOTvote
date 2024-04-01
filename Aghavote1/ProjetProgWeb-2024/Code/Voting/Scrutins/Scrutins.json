@@ -14,7 +14,9 @@
         "votants": null,
         "dateDebut": "2024-03-28",
         "dateFin": "2024-03-29",
-        "alreadyVoted": null
+        "alreadyVoted": [
+            "Kyum"
+        ]
     },
     {
         "numScrutin": "220801",

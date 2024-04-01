@@ -212,6 +212,31 @@ function signup() {
         });
     }
 
+    function getScrutinToManage() {
+        // Sélectionnez le bouton
+        var button = $("button[name=button-manage]");
+        // Faites l'appel AJAX
+        $.ajax({
+            url: 'managerScrutin.php',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                console.log(data)
+                // Si l'utilisateur ne manage pas, désactivez le bouton
+                if (data==0) {
+                    console.log(data)
+                    button.prop('disabled', true);
+                } else {
+                    button.prop('disabled', false);
+                }
+            },
+            error: function(error) {
+                console.error('Erreur:', error);
+            }
+        });
+
+    }
+
     var utilisateurs;
 
 

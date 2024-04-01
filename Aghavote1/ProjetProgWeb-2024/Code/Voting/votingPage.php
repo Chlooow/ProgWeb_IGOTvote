@@ -145,8 +145,6 @@
                 <h4> <label for="selected-scrutin-title" id="selected-scrutin-title"></label> </h4>
                 <h4> Organisateur: <label for="selected-scrutin-organisateur" id="selected-scrutin-organisateur"></label></h4> 
                 <h4> Question: <label for="selected-scrutin-question" id="selected-scrutin-question"></label></h4>
-                
-                <!--<?php //endif; ?>-->
 
                 <div class="d-grid gap col-6 mx-auto">
                     <!--<form id="form" action="vote.php" method="POST">-->
@@ -154,16 +152,10 @@
                         <div class="form-group row">
                             <div class="mb-4">
                                 <select class="form-select mt-3" id="choix" name="choix">
-                                <?php
-                                    // Loop through options and display them as dropdown options
-                                    /*foreach ($selectedScrutin['options'] as $index => $option) {
-                                        echo "<option value='$index'>$option</option>";
-                                    }*/
-                                    ?>
                                 </select>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-success">Voter</button>
+                        <button type="submit" class="btn btn-success" onclick=" vote()">Voter</button>
                     <!--</form>-->
                     
     </div>

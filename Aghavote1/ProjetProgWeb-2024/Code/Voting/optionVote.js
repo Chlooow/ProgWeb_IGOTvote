@@ -1,34 +1,3 @@
-/*function generateOptions() {
-    // Vérifier si le nombre d'options est valide
-    var nbOptions = parseInt($("#nbOptions").val());
-    
-    if (nbOptions > 0) {
-        // Effacer les options précédentes
-        $("#optionsContainer").empty();
-        console.log("Options: " + nbOptions);
-
-        // Générer les champs de saisie pour les options
-        for (let i = 1; i <= nbOptions; i++) {
-            var optionInput = '<div class="form-group">';
-            optionInput += '<label for="option' + i + '">Option de vote ' + i + '</label>';
-            optionInput += '<input type="text" name="option' + i + '" class="form-control mb-2" placeholder="Option ' + i + '" required autocomplete="on">';
-            optionInput += '</div>';
-            $("#optionsContainer").append(optionInput);
-        }
-    } else {
-        alert("Veuillez entrer un nombre valide d'options de vote.");
-    }
-}
-
-$(document).ready(function() {
-    $("#Creation-scrutin-frm").submit(function(event) {
-
-
-        console.log("Options: " + nbOptions);
-        generateOptions(nbOptions);
-    });
-});*/
-
 
 // ----------- Valider les options de vote ----------------
 
@@ -106,6 +75,37 @@ function destroyScrutin() {
                 console.error('Erreur lors de la suppression des données du scrutin : ' + error);
             }
         });
+    });
+}
+
+// ----------- Voter ----------------
+
+function vote() {
+    // Récupérer les données du formulaire
+    var scrutinNumber = $("#selected-scrutin-num").text();
+    var vote = $("#choix").val();
+    //var votant = $("#votant").val();
+
+    // Prepare data to send via AJAX
+    var formData = {
+        scrutinNumber: scrutinNumber,
+        selectedOption: vote
+    };
+
+    // Envoyer une requête AJAX au fichier voteProcess.php
+    $.ajax({
+        url: 'voteProcess.php',
+        method: 'POST',
+        data: formData,
+        success: function(response) {
+            // Traiter la réponse du serveur
+            console.log(response);
+            alert("Votre vote a été enregistré avec succès.");
+        },
+        error: function(e) {
+            console.error(xhr.responseText);
+            alert("Erreur lors de l'enregistrement de votre vote : " + e.responseText);
+        }
     });
 }
 
