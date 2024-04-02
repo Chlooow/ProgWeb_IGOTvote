@@ -20,7 +20,6 @@
 <div class="position-fixed top-100 end-0 translate-middle-y">
     <button class="btn btn-success mb-4" id="createScrutin" onclick="console.log('scrutinnnnnnnnn'); createScrutin();">Créer le scrutin</button><br>
     <button class="btn btn-success mb-4" id="closeScrutin" disabled>Fermer le scrutin</button><br>
-    <button class="btn btn-success mb-4" id="viewResults" disabled>Voir les Résultats</button><br>
     <button class="btn btn-success mb-4" id="destroyscrutin" data-id="" onclick="console.log('scrutinnnnnnnnn');destroyScrutin();">Detruire le Scrutin</button><br>
 </div>
 
@@ -252,18 +251,7 @@ $(document).ready(function() {
             </div>
         </div>  
 
-<!-- Ceux qui ont déjà voté -->
-<div class="row mt-4">
-            <div class="col-lg-4 offset-lg-4 bg-light rounded" id="optionsContainervoted">
-                <h5>Personnes ayant déjà voté </h5>
-                <div>
-                    <label for="">Personnes ayant déjà voté</label>
-                    <select name="participants[]" multiple class="form-control" id="userSelectAlreadyVoted">
-                    </select>
-                    <button  class="btn btn-primary btn-success ms-2"  id="boutonalreadyvoted">Submit</button>
-                </div>
-            </div>
-        </div>
+
 
 
 </body>

@@ -53,7 +53,7 @@
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-success mt-3" id="letsmanage"> Gérer</button>
+                        <button type="submit" class="btn btn-success mt-3" id="letsmanage" onclick="handleSelectChange();"> Gérer</button>
                     </div>
                 </div>
             </main>
@@ -70,7 +70,7 @@
         <div class="col-lg-4 offset-lg-4" id="id-de-scrutin">
             <!-- Numéro de scrutin -->
             <label for="numScrutin" style="color: white;">Numéro de scrutin</label>
-            <input type="text" name="numScrutin" id="numScrutin" class="form-control" readonly value="0">
+            <input type="text" name="numScrutin-a-gerer" id="numScrutin" class="form-control" readonly value="0">
         </div>
     </div>
 </div>
@@ -81,10 +81,11 @@
         <div class="col-lg-4 offset-lg-4" id="div-organisateur">
             <!-- Nom de l'organisateur -->
             <label for="organisateur" style="color: white;">Nom de l'organisateur</label>
-            <input type="text" name="organisateur" id="organisateur" class="form-control" readonly value="<?php session_start(); echo $_SESSION['username']; ?>">
+            <input type="text" name="organisateur-scrutin-available" id="organisateur-scrutin-available" class="form-control" readonly value=" ">
         </div>
     </div>
 </div>
+
 
 <!-- -------------------------------------- -->
 
@@ -96,16 +97,24 @@
                 <div class="form-group">
                     <!-- Titre du scrutin -->
                     <label for="Titre">Titre du scrutin</label>
-                    <input type="text" name="Titre" class="form-control mb-2" placeholder="Titre" readonly value="">
+                    <input type="text" name="Titre-scrutin" class="form-control mb-2" placeholder="Titre"  readonly value="">
                 </div>
 
                 <div class="form-group">
                     <!-- Question du vote -->
                     <label for="Question">Quel est la question du scrutin ?</label>
-                    <input type="text" name="Question" class="form-control mb-2" placeholder="Question" readonly value="">
+                    <input type="text" name="Question-scrutin" class="form-control mb-2" placeholder="Question" readonly value="">
                 </div>
 
-                <!--</form>-->
+                <div class="form-group">
+                    <!-- Option de vote available-->
+                    <h5>Nombre d'options de vote actuelle</h5>
+                    <label for="nbOptions" id="available-option"></label>
+                </div>
+
+                <p> Voulez-vous en rajouter ? </p>
+                    
+
                 <div class="form-group">
                     <!-- Option de vote -->
                     <label for="nbOptions">Nombre d'options de vote</label>
@@ -174,6 +183,9 @@
             <!-- Les participants -->
             <div class="row mt-4" id="div-alreadyvoteduser">
                 <div class="col-lg-4 offset-lg-4 bg-light rounded" id="optionsContainerParticipant">
+                    <h5>Les participants au vote actuelle :</h5>
+                    <p> Voulez-vous en rajouter ? </p>
+                    <label for="" id="participants-scrutin"></label>
                     <h5>Liste des personnes participant au scrutin </h5>
                     <div>
                         <label for="">Personnes ayant un compte sur Aghavote</label>
@@ -243,6 +255,14 @@
             <div id="div-date">
                 <div class="row mt-4">
                     <div class="col-lg-4 offset-lg-4 bg-light rounded" id="optionsContainerdate">
+                        <h5>Date de debut et de fin du scrutin actuelle</h5>
+                        <li>
+                        <label for="date-debut-available" id= "date-debut-available">Date de debut</label>
+                        </li>
+                        <li>
+                        <label for="date-fin-available" id="date-fin-available">Date de fin </label>
+                        </li>
+
                         <h5>Date de debut et de fin du scrutin </h5>
                         <div>
                             <label for="">Date de debut</label>
@@ -262,11 +282,94 @@
                             <label for="">Personnes ayant déjà voté</label>
                             <select name="participants[]" multiple class="form-control" id="userSelectAlreadyVoted">
                             </select>
-                            <button class="btn btn-primary btn-success ms-2" id="boutonalreadyvoted">Submit</button>
                         </div>
                     </div>
                 </div>
             </div>
+
+
+    <!-- -------------------------------------- -->
+
+    <!-- Fonction qui permet de choisir un scrutin dans le select -->
+
+    <script>
+    function handleSelectChange() {
+    var selectedScrutinId = $("#choix-scrutin").val();
+    console.log("Selected value:", selectedScrutinId);
+
+    // Assuming your scrutins data is stored in a PHP array called $scrutinsData
+    var scrutinsData = <?php echo json_encode($_SESSION['scrutins']); ?>;
+    console.log("Scrutins data:", scrutinsData);
+
+    // Find the scrutin object with the selected ID from the session data
+    var selectedScrutin = scrutinsData.find(function(scrutin) {
+        return scrutin.numScrutin === selectedScrutinId;
+    });
+    console.log("Selected scrutin:", selectedScrutin);
+
+    // Display the scrutin information
+    if (selectedScrutin && selectedScrutin.options) {
+        console.log("Selected scrutin:", selectedScrutin);
+        // Update the HTML elements to display scrutin information
+
+        // Set the value of the Question input field
+        $("input[name='Question-scrutin']").attr('value', selectedScrutin.question);
+        $("input[name='Titre-scrutin']").attr('value', selectedScrutin.titre);
+        $("input[name='numScrutin-a-gerer']").attr('value', selectedScrutin.numScrutin);
+        $("input[name='organisateur-scrutin-available']").attr('value', selectedScrutin.organisateur);
+
+        // Update the options in the select element
+        var optionsHtml = "<ul>";
+        selectedScrutin.options.forEach(function(option, index) {
+            optionsHtml += "<li>" + option + "</li>";
+        });
+        optionsHtml += "</ul>";
+        $("#available-option").html(optionsHtml);
+
+        // Generate the participants list
+        var participantsHtml = "<ul>";
+        if (selectedScrutin.participants && selectedScrutin.participants.length > 0) {
+            selectedScrutin.participants.forEach(function(participant) {
+                participantsHtml += "<li>" + participant + "</li>";
+            });
+        } else {
+            participantsHtml += "<li>No participants</li>";
+        }
+        participantsHtml += "</ul>";
+
+        // Update the HTML content with the participants list
+        $("#participants-scrutin").html(participantsHtml);
+
+        // Display the date information
+        var dateDebut = selectedScrutin.dateDebut;
+        var dateFin = selectedScrutin.dateFin;
+
+        // Update the HTML elements with the date information
+        $("#date-debut-available").text(dateDebut);
+        $("#date-fin-available").text(dateFin);
+
+        // Display the already voted users
+        if (selectedScrutin.alreadyVoted) {
+            var alreadyVotedHtml = "<select name='participants[]' multiple class='form-control'>";
+            selectedScrutin.alreadyVoted.forEach(function(voter) {
+                alreadyVotedHtml += "<option value='" + voter + "'>" + voter + "</option>";
+            });
+            alreadyVotedHtml += "</select>";
+            alreadyVotedHtml += "<button class='btn btn-primary btn-success ms-2' id='boutonalreadyvoted'>Submit</button>";
+            $("#optionsContainervoted").html(alreadyVotedHtml);
+        } else {
+            $("#optionsContainervoted").html("None");
+        }
+
+    } else {
+        console.log("Selected scrutin not found or doesn't have options.");
+    }
+}
+
+</script>
+
+
+<!-- -------------------------------------- -->
 
             <script type="text/javascript">
                 /* $(document).ready(function(){

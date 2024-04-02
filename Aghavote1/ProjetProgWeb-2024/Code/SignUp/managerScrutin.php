@@ -17,11 +17,19 @@
     // Parcourir chaque scrutin
     foreach ($data as $i=>$scrutin) {
         $dd .= $json;
+
+        //echo "Username: " . $username . ", Organisateur: " . $scrutin['organisateur'] . "<br>";
+
+        //echo "Scrutin Number: " . $scrutin['numScrutin'] . "<br>";
         // Vérifier si l'utilisateur est organisateur
         if ($username === $scrutin['organisateur']) {
             // L'utilisateur est organisateur
             $isOrganisateur = true;
             $count++;
+
+            echo "Scrutin Number: " . $scrutin['numScrutin'] . "<br>";
+            echo "isOrganisateur: " . $isOrganisateur . "<br>";
+            echo "Username: " . $username . ", Organisateur: " . $scrutin['organisateur'] . "<br>";
             
             // récupérer le scrutin, le titre et l'organisateur
         $scrutins[] = [
