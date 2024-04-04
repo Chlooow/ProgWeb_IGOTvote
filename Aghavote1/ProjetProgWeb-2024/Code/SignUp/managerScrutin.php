@@ -1,6 +1,31 @@
 <?php
     session_start(); // Démarrer la session
 
+    function updateScrutinStatus($numScrutin, $newStatus) {
+        // Lire le fichier JSON
+        $json = file_get_contents('../Voting/Scrutins/Scrutins.json');
+        $data= json_decode($json, true);
+
+        // Parcourir les scrutins
+        foreach ($data as &$scrutin) {
+            // Vérifier si le scrutin a le bon numéro
+            if ($scrutin['numScrutin'] == $numScrutin) {
+                // Mettre à jour le statut du scrutin
+                $scrutin['statut'] = $newStatus;
+            }
+        }
+
+        // Réécrire le fichier JSON
+        $json = json_encode($data, JSON_PRETTY_PRINT);
+        file_put_contents('../Voting/Scrutins/Scrutins.json', $json);
+    }
+
+    if(isset($_POST['numScrutin']) && isset($_POST['statut'])) {
+        updateScrutinStatus($_POST['numScrutin'], false);
+        echo json_encode(['success' => true]);
+        exit;
+    }
+
     // Récupérer le nom d'utilisateur de la session
     $username = isset($_SESSION['username']) ? $_SESSION['username'] : '';
 
@@ -41,15 +66,16 @@
             'question' => $scrutin['question'],
             'options' => $scrutin['options'],
             'participants' => $scrutin['participants'],
-            'votants' => $scrutin['votants'],
             'dateDebut' => $scrutin['dateDebut'],
             'dateFin' => $scrutin['dateFin'],
-            'alreadyVoted' => $scrutin['alreadyVoted']
+            'alreadyVoted' => $scrutin['alreadyVoted'],
+            'statut' => $scrutin['statut']
         ];
         }
     }
 
 $_SESSION['organisateur'] = $isOrganisateur;
+//$_SESSION['statut'] = $scrutins['statut'];
 
 $_SESSION['count'] = $count;
 

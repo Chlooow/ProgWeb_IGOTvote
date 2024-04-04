@@ -90,21 +90,29 @@ function closeScrutin() {
 
     // Récupérer le numéro de scrutin
     var numScrutin = $("#numScrutin").val();
-    var statut = false; // Set statut to false
 
     // Envoyer une requête AJAX au fichier scrutinProcess.php pour mettre à jour le statut du scrutin
     $.ajax({
-        url: 'scrutinProcess.php',
+        url: '../SignUp/managerScrutin.php',
         method: 'POST',
         data: {
             numScrutin: numScrutin,
-            statut: statut // Pass the statut parameter
+            statut: false // Pass the statut parameter
         },
         success: function(response) {
             // Traiter la réponse du serveur
             console.log(response);
+
+        // Vérifier le statut du scrutin dans la réponse
+        if (response && response.statut === false) {
+            // Si le statut est déjà false, afficher une alerte
+            alert("Ce scrutin est déjà fermé.");
+        }else {
+            // Sinon, afficher une alerte de confirmation
+
             alert("Le scrutin a été fermé avec succès.");
-        },
+        }
+    },
         error: function(e) {
             alert("Erreur lors de la fermeture du scrutin AJAX : " + e.responseText);
         }
@@ -114,20 +122,7 @@ function closeScrutin() {
 // ----------- Vérifier si l'utilisateur a déjà voté ----------------
 
 
-// ----------- Taux de participation ----------------
 
-function participationRate() {
-    // Récupérer le numéro de scrutin
-    var numScrutin = $("#numScrutin").val();
-    var participants = $("#userSelectParticipant").val();
-    var alreadyVoted = $("#userSelectAlreadyVoted").val();
-
-    // Calculer le taux de participation
-    var participationRate = (alreadyVoted / participants) * 100;
-
-    // Afficher le taux de participation
-    alert("Le taux de participation est de " + participationRate + "%.");
-}
 
 
 // ----------- Voter ----------------

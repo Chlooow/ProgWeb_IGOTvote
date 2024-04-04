@@ -189,6 +189,7 @@ function signup() {
 
        // Fonction de récupération du statut votant de l'utilisateur
     function getScrutin() {
+        console.log("getScrutin");
         // Sélectionnez le bouton
         var button = $("button[name=btnvote]");
         // Faites l'appel AJAX
@@ -207,7 +208,8 @@ function signup() {
                 }
             },
             error: function(error) {
-                console.error('Erreur getScrutin():', error);
+                console.error(error.responseText);
+                console.error('Erreur getScrutin():', error);// ya un soucis ici
             }
         });
     }
@@ -234,7 +236,7 @@ function signup() {
             error: function(error) {
                 //console.error('Erreur getScrutinToManage():', errorThrown);
                 console.error(error.responseText);
-                console.error('Erreur getScrutinToManage():', error); // ya un soucis ici
+                console.error('Erreur getScrutinToManage():', error); 
             }
         });
 
