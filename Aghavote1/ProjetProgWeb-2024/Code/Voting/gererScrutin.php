@@ -17,11 +17,7 @@ error_log("gg".$_SESSION['count']);
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
 
-    <style>
-        type= "text/css">
-        #viewResults
-        { display: none; }
-        </style>
+    
 
 </head>
 <body style="background-image: url('https://altselection.com/wp-content/uploads/2022/06/220524-MPD-Twitter-Update-GOT7-NANANA-Relay-Dance-Behind-The-Scenes-documents-1.jpeg'); background-size: cover; background-repeat: repeat;">
@@ -311,6 +307,68 @@ error_log("gg".$_SESSION['count']);
 
     <!-- -------------------------------------- -->
 
+    <!-- Taux de participation -->
+
+    <div class="row mt-4">
+        <div class="col-lg-4 offset-lg-4 bg-light rounded" id="participationRate">
+            <h5>Taux de participation</h5>
+            <div id="participationRateContent">
+                <!-- Content will be dynamically added here -->
+                <button class="btn btn-primary btn-success ms-2" id="boutonParticipation" onclick="participationRate();">Voir</button>
+            </div>
+        </div>
+
+    <!-- -------------------------------------- -->
+
+    <script>
+    // ----------- Taux de participation ----------------
+
+function participationRate() {
+    var selectedScrutinId = $("#choix-scrutin").val();
+    console.log("Selected value:", selectedScrutinId);
+
+    // Assuming your scrutins data is stored in a PHP array called $scrutinsData
+    var scrutinsData = <?php echo json_encode($_SESSION['scrutins']); ?>;
+    console.log("Scrutins data:", scrutinsData);
+
+    // Find the scrutin object with the selected ID from the session data
+    var selectedScrutin = scrutinsData.find(function(scrutin) {
+        return scrutin.numScrutin === selectedScrutinId;
+    });
+    console.log("Selected scrutin:", selectedScrutin);
+
+    console.log(selectedScrutin.participants.length);
+    if(selectedScrutin.alreadyVoted == null){
+        selectedScrutin.alreadyVoted = [];
+        selectedScrutin.alreadyVoted.length = 0;
+        console.log(selectedScrutin.alreadyVoted.length);
+    } else {
+        console.log(selectedScrutin.alreadyVoted.length);
+    }
+    
+    // Display the scrutin information
+    if (selectedScrutin && selectedScrutin.participants && selectedScrutin.alreadyVoted) {
+
+    // Récupérer le numéro de scrutin
+    var numScrutin = $("#numScrutin").val();
+    var participants = selectedScrutin.participants.length;
+    var alreadyVoted = selectedScrutin.alreadyVoted.length;
+
+   
+    // Calculer le taux de participation
+    var participationRate = (alreadyVoted / participants) * 100;
+    // Afficher le taux de participation
+    alert("Le taux de participation est de " + participationRate + "%.");
+    }
+    
+    //console.log(participants);
+    //console.log(alreadyVoted);
+    
+}
+</script>
+
+    <!-- -------------------------------------- -->
+
     <!-- Résultat du vote -->
     <div class="row mt-4">
         <div class="col-lg-4 offset-lg-4 bg-light rounded" id="votingResults">
@@ -403,6 +461,13 @@ error_log("gg".$_SESSION['count']);
     }
 }
 
+                $("#viewResults").hide();
+                $("#votingResults").hide();
+                
+                // Fonction pour fermer le scrutin
+                $("#closeScrutin").click(function () {
+                    $("#viewResults").show();
+                });
 </script>
 
 
@@ -413,6 +478,8 @@ error_log("gg".$_SESSION['count']);
 <!-- -------------------------------------- -->
 
             <script type="text/javascript">
+                
+
                 /* $(document).ready(function(){
                 $("#letsmanage").click(function(){
                 $("id-de-scrutin").hide();

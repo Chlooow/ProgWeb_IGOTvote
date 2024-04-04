@@ -33,8 +33,12 @@
         },
         "dateDebut": "",
         "dateFin": "",
-        "alreadyVoted": null,
-        "statut": null
+        "alreadyVoted": [
+            "Jaybnow.hr",
+            "Kyum",
+            "BamBam1a"
+        ],
+        "statut": "true"
     },
     {
         "numScrutin": "083537",
@@ -50,6 +54,126 @@
         "dateFin": "",
         "alreadyVoted": null,
         "statut": "true"
+    },
+    {
+        "numScrutin": "0",
+        "organisateur": "BamBam1a",
+        "titre": null,
+        "question": null,
+        "options": null,
+        "participants": null,
+        "procuration": {
+            "": null
+        },
+        "dateDebut": null,
+        "dateFin": null,
+        "alreadyVoted": null,
+        "statut": "false"
+    },
+    {
+        "numScrutin": "083250",
+        "organisateur": "BamBam1a",
+        "titre": null,
+        "question": null,
+        "options": null,
+        "participants": null,
+        "procuration": {
+            "": null
+        },
+        "dateDebut": null,
+        "dateFin": null,
+        "alreadyVoted": null,
+        "statut": "false"
+    },
+    {
+        "numScrutin": "0",
+        "organisateur": "BamBam1a",
+        "titre": null,
+        "question": null,
+        "options": null,
+        "participants": null,
+        "procuration": {
+            "": null
+        },
+        "dateDebut": null,
+        "dateFin": null,
+        "alreadyVoted": null,
+        "statut": "false"
+    },
+    {
+        "numScrutin": "083250",
+        "organisateur": "BamBam1a",
+        "titre": null,
+        "question": null,
+        "options": null,
+        "participants": null,
+        "procuration": {
+            "": null
+        },
+        "dateDebut": null,
+        "dateFin": null,
+        "alreadyVoted": null,
+        "statut": "false"
+    },
+    {
+        "numScrutin": "083250",
+        "organisateur": "BamBam1a",
+        "titre": null,
+        "question": null,
+        "options": null,
+        "participants": null,
+        "procuration": {
+            "": null
+        },
+        "dateDebut": null,
+        "dateFin": null,
+        "alreadyVoted": null,
+        "statut": "false"
+    },
+    {
+        "numScrutin": "083250",
+        "organisateur": "BamBam1a",
+        "titre": null,
+        "question": null,
+        "options": null,
+        "participants": null,
+        "procuration": {
+            "": null
+        },
+        "dateDebut": null,
+        "dateFin": null,
+        "alreadyVoted": null,
+        "statut": "false"
+    },
+    {
+        "numScrutin": "0",
+        "organisateur": "BamBam1a",
+        "titre": null,
+        "question": null,
+        "options": null,
+        "participants": null,
+        "procuration": {
+            "": null
+        },
+        "dateDebut": null,
+        "dateFin": null,
+        "alreadyVoted": null,
+        "statut": "false"
+    },
+    {
+        "numScrutin": "0",
+        "organisateur": "BamBam1a",
+        "titre": null,
+        "question": null,
+        "options": null,
+        "participants": null,
+        "procuration": {
+            "": null
+        },
+        "dateDebut": null,
+        "dateFin": null,
+        "alreadyVoted": null,
+        "statut": "false"
     },
     {
         "numScrutin": "0",

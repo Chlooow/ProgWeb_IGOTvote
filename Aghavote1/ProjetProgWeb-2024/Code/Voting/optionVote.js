@@ -87,6 +87,7 @@ function destroyScrutin() {
 // ----------- fermer les scrutins ----------------
 
 function closeScrutin() {
+
     // Récupérer le numéro de scrutin
     var numScrutin = $("#numScrutin").val();
     var statut = false; // Set statut to false
@@ -108,6 +109,24 @@ function closeScrutin() {
             alert("Erreur lors de la fermeture du scrutin AJAX : " + e.responseText);
         }
     });
+}
+
+// ----------- Vérifier si l'utilisateur a déjà voté ----------------
+
+
+// ----------- Taux de participation ----------------
+
+function participationRate() {
+    // Récupérer le numéro de scrutin
+    var numScrutin = $("#numScrutin").val();
+    var participants = $("#userSelectParticipant").val();
+    var alreadyVoted = $("#userSelectAlreadyVoted").val();
+
+    // Calculer le taux de participation
+    var participationRate = (alreadyVoted / participants) * 100;
+
+    // Afficher le taux de participation
+    alert("Le taux de participation est de " + participationRate + "%.");
 }
 
 
