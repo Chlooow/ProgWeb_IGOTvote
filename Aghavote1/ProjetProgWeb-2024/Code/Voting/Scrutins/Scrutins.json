@@ -1,129 +1,69 @@
 [
     {
-        "numScrutin": "012409",
+        "numScrutin": "081313",
         "organisateur": "BamBam1a",
-        "titre": "Concert GOT7",
-        "question": "Voulez-vous que GOT7 reviennent en france ?",
-        "options": [
-            "Oui",
-            "Non"
-        ],
-        "participants": [
-            "Kyum"
-        ],
-        "votants": null,
-        "dateDebut": "2024-03-28",
-        "dateFin": "2024-03-29",
-        "alreadyVoted": [
-            "Kyum"
-        ]
-    },
-    {
-        "numScrutin": "220801",
-        "organisateur": "MarkTuan",
-        "titre": "Mark World Tour",
-        "question": "What does Mark should eat in paris ?",
-        "options": [
-            "fromage",
-            "saucissons",
-            "baguette",
-            "vin"
-        ],
-        "participants": [
-            "BamBam1a"
-        ],
-        "votants": null,
-        "dateDebut": "",
-        "dateFin": "",
-        "alreadyVoted": null
-    },
-    {
-        "numScrutin": "221021",
-        "organisateur": "Kyum",
-        "titre": "",
-        "question": "",
-        "options": [
-            "n",
-            "c",
-            "d",
-            "v"
-        ],
-        "participants": [
-            "Kyum",
-            "JacksonWang852g7"
-        ],
-        "votants": null,
-        "dateDebut": "",
-        "dateFin": "",
-        "alreadyVoted": null
-    },
-    {
-        "numScrutin": "221144",
-        "organisateur": "Kyum",
         "titre": "",
         "question": "",
         "options": null,
-        "participants": [
-            "Kyum"
-        ],
-        "votants": null,
+        "participants": null,
+        "procuration": {
+            "": null
+        },
         "dateDebut": "",
         "dateFin": "",
-        "alreadyVoted": null
+        "alreadyVoted": null,
+        "statut": true
     },
     {
-        "numScrutin": "183935",
-        "organisateur": "Kyum",
-        "titre": "Coco",
+        "numScrutin": "083250",
+        "organisateur": "BamBam1a",
+        "titre": "coco",
         "question": "Voulez-vous que GOT7 reviennent en france ?",
         "options": [
-            "1",
-            "2",
-            "3"
+            "yoyo",
+            "yaya"
         ],
         "participants": [
-            "Jinyoung_0922jy"
-        ],
-        "votants": null,
-        "dateDebut": "",
-        "dateFin": "",
-        "alreadyVoted": null
-    },
-    {
-        "numScrutin": "184126",
-        "organisateur": "Kyum",
-        "titre": "Oley",
-        "question": "got7 tour ?",
-        "options": [
-            "youpi",
-            "noooooooooon"
-        ],
-        "participants": [
-            "Jinyoung_0922jy"
-        ],
-        "votants": null,
-        "dateDebut": "",
-        "dateFin": "",
-        "alreadyVoted": null
-    },
-    {
-        "numScrutin": "194750",
-        "organisateur": "BamBam1a",
-        "titre": "Bday party",
-        "question": "How many person should i invite ?",
-        "options": [
-            "3",
-            "30"
-        ],
-        "participants": [
+            "Jaybnow.hr",
             "Kyum",
             "BamBam1a"
         ],
         "procuration": {
-            "Kyum": "0"
+            "": null
         },
         "dateDebut": "",
         "dateFin": "",
-        "alreadyVoted": null
+        "alreadyVoted": null,
+        "statut": null
+    },
+    {
+        "numScrutin": "083537",
+        "organisateur": "BamBam1a",
+        "titre": "",
+        "question": "",
+        "options": null,
+        "participants": null,
+        "procuration": {
+            "": null
+        },
+        "dateDebut": "",
+        "dateFin": "",
+        "alreadyVoted": null,
+        "statut": "true"
+    },
+    {
+        "numScrutin": "0",
+        "organisateur": "BamBam1a",
+        "titre": null,
+        "question": null,
+        "options": null,
+        "participants": null,
+        "procuration": {
+            "": null
+        },
+        "dateDebut": null,
+        "dateFin": null,
+        "alreadyVoted": null,
+        "statut": "false"
     }
 ]

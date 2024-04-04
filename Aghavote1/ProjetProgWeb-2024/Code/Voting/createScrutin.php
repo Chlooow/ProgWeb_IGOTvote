@@ -16,10 +16,9 @@
 
 <a href="../SignUp/pageChoix.php" class="btn btn-sucess btn-secondary mt-2 d-block mx-auto" style="position: absolute; top: 0; left: 10px;">Back</a>
 
-<!-- Boutons sur le côté droit -->
-<div class="position-fixed top-100 end-0 translate-middle-y">
+<!-- Boutons sur le côté gauche -->
+<div style="position: fixed; top: 90px; right: 0; transform: translate(0, -50%);">
     <button class="btn btn-success mb-4" id="createScrutin" onclick="console.log('scrutinnnnnnnnn'); createScrutin();">Créer le scrutin</button><br>
-    <button class="btn btn-success mb-4" id="closeScrutin" disabled>Fermer le scrutin</button><br>
     <button class="btn btn-success mb-4" id="destroyscrutin" data-id="" onclick="console.log('scrutinnnnnnnnn');destroyScrutin();">Detruire le Scrutin</button><br>
 </div>
 
@@ -29,7 +28,7 @@
         <div class="col-lg-4 offset-lg-4" id="alert">
             <div class="alert alert-success">
                 <strong id="result"> Bonjour, pour créer un scrutin veuillez remplir tout les champs 
-                    puis cliquer sur start pour commencer le vote.
+                    puis cliquer sur "Crée le scrutin" pour pouvoir le crée.
                 </strong>
             </div>
         </div>

@@ -18,6 +18,7 @@ function createScrutin() {
     var dateDebut = $("input[name='dateDebut']").val();
     var dateFin = $("input[name='dateFin']").val();
     var alreadyVoted = $("#userSelectAlreadyVoted").val();
+    var statut = true;
 
     // Envoyer une requête AJAX au fichier scrutinProcess.php
     $.ajax({
@@ -34,7 +35,8 @@ function createScrutin() {
             procurationVotes: attorneyVotes,
             dateDebut: dateDebut,
             dateFin: dateFin,
-            alreadyVoted: alreadyVoted
+            alreadyVoted: alreadyVoted,
+            statut: statut
         },
         success: function(response) {
             // Traiter la réponse du serveur
@@ -81,6 +83,33 @@ function destroyScrutin() {
         });
     });
 }
+
+// ----------- fermer les scrutins ----------------
+
+function closeScrutin() {
+    // Récupérer le numéro de scrutin
+    var numScrutin = $("#numScrutin").val();
+    var statut = false; // Set statut to false
+
+    // Envoyer une requête AJAX au fichier scrutinProcess.php pour mettre à jour le statut du scrutin
+    $.ajax({
+        url: 'scrutinProcess.php',
+        method: 'POST',
+        data: {
+            numScrutin: numScrutin,
+            statut: statut // Pass the statut parameter
+        },
+        success: function(response) {
+            // Traiter la réponse du serveur
+            console.log(response);
+            alert("Le scrutin a été fermé avec succès.");
+        },
+        error: function(e) {
+            alert("Erreur lors de la fermeture du scrutin AJAX : " + e.responseText);
+        }
+    });
+}
+
 
 // ----------- Voter ----------------
 

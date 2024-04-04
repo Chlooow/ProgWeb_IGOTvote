@@ -16,15 +16,22 @@ error_log("gg".$_SESSION['count']);
     <script src="optionVote.js">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+
+    <style>
+        type= "text/css">
+        #viewResults
+        { display: none; }
+        </style>
+
 </head>
 <body style="background-image: url('https://altselection.com/wp-content/uploads/2022/06/220524-MPD-Twitter-Update-GOT7-NANANA-Relay-Dance-Behind-The-Scenes-documents-1.jpeg'); background-size: cover; background-repeat: repeat;">
 
 <a href="../SignUp/pageChoix.php" class="btn btn-sucess btn-secondary mt-2 d-block mx-auto" style="position: absolute; top: 0; left: 10px;">Back</a>
 
 <!-- Boutons sur le côté droit -->
-<div class="position-fixed top-100 end-0 translate-middle-y">
-    <button class="btn btn-success mb-4" id="closeScrutin" disabled>Fermer le scrutin</button><br>
-    <button class="btn btn-success mb-4" id="viewResults" disabled>Voir les Résultats</button><br>
+<div style="position: fixed; top: 90px; right: 0; transform: translate(0, -50%);">
+    <button class="btn btn-success mb-4" id="closeScrutin" onclick="closeScrutin();">Fermer le scrutin</button><br>
+    <button class="btn btn-success mb-4" id="viewResults"> Voir les Résultats</button><br>
     <button class="btn btn-success mb-4" id="destroyscrutin" data-id="" onclick="console.log('scrutinnnnnnnnn');destroyScrutin();">Detruire le Scrutin</button><br>
 </div>
 
@@ -304,9 +311,22 @@ error_log("gg".$_SESSION['count']);
 
     <!-- -------------------------------------- -->
 
-    <!-- Fonction qui permet de choisir un scrutin dans le select -->
+    <!-- Résultat du vote -->
+    <div class="row mt-4">
+        <div class="col-lg-4 offset-lg-4 bg-light rounded" id="votingResults">
+            <h5>Résultats du vote</h5>
+            <div id="votingResultsContent">
+                <!-- Content will be dynamically added here -->
+            </div>
+        </div>
+    </div>
 
-    
+
+
+
+
+
+    <!-- Fonction qui permet de choisir un scrutin dans le select -->
 
     <script>
 
@@ -384,6 +404,8 @@ error_log("gg".$_SESSION['count']);
 }
 
 </script>
+
+
 
 
 
