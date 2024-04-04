@@ -105,5 +105,25 @@
         "dateDebut": "",
         "dateFin": "",
         "alreadyVoted": null
+    },
+    {
+        "numScrutin": "194750",
+        "organisateur": "BamBam1a",
+        "titre": "Bday party",
+        "question": "How many person should i invite ?",
+        "options": [
+            "3",
+            "30"
+        ],
+        "participants": [
+            "Kyum",
+            "BamBam1a"
+        ],
+        "procuration": {
+            "Kyum": "0"
+        },
+        "dateDebut": "",
+        "dateFin": "",
+        "alreadyVoted": null
     }
 ]

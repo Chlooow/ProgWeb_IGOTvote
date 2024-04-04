@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php session_start(); 
+error_log("gg".$_SESSION['count']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +13,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
-    <script src="optionVote.js"></script>
+    <script src="optionVote.js">
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
 </head>
 <body style="background-image: url('https://altselection.com/wp-content/uploads/2022/06/220524-MPD-Twitter-Update-GOT7-NANANA-Relay-Dance-Behind-The-Scenes-documents-1.jpeg'); background-size: cover; background-repeat: repeat;">
@@ -35,6 +38,18 @@
             </div>
         </div>
     </div>
+
+    <!-- TEST 
+    <div class="container">
+        <div class="row">
+            TEST TEST
+            <?php
+       // echo $_SESSION['scrutins'][0]['numScrutin'];
+       // echo $_SESSION['scrutins'][0]['organisateur'];
+
+?>
+        </div>
+    </div>-->
 
     <div class="container">
         <div class="row">
@@ -61,7 +76,6 @@
     </div>
 
     <!-- -------------------------------------- -->
-
 
 
 <!-- ID du scrutin -->
@@ -292,7 +306,10 @@
 
     <!-- Fonction qui permet de choisir un scrutin dans le select -->
 
+    
+
     <script>
+
     function handleSelectChange() {
     var selectedScrutinId = $("#choix-scrutin").val();
     console.log("Selected value:", selectedScrutinId);
@@ -367,6 +384,8 @@
 }
 
 </script>
+
+
 
 
 <!-- -------------------------------------- -->

@@ -10,7 +10,8 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
     $question = $_POST['question'];
     $options = $_POST['options'];
     $participants = $_POST['participants'];
-    $votants = $_POST['votants'];
+    $procurationName = $_POST['procurationName'];
+    $procurationVotes = $_POST['procurationVotes'];
     $dateDebut = $_POST['dateDebut'];
     $dateFin = $_POST['dateFin'];
     $alreadyVoted = $_POST['alreadyVoted'];
@@ -23,7 +24,9 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
         'question' => $question,
         'options' => $options,
         'participants' => $participants,
-        'votants' => $votants,
+        'procuration' => array(
+            $procurationName => $procurationVotes
+        ),
         'dateDebut' => $dateDebut,
         'dateFin' => $dateFin,
         'alreadyVoted' => $alreadyVoted

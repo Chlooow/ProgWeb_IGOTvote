@@ -207,17 +207,18 @@ function signup() {
                 }
             },
             error: function(error) {
-                console.error('Erreur:', error);
+                console.error('Erreur getScrutin():', error);
             }
         });
     }
 
     function getScrutinToManage() {
+        console.log("getScrutinToManage")
         // Sélectionnez le bouton
         var button = $("button[name=button-manage]");
         // Faites l'appel AJAX
         $.ajax({
-            url: 'managerScrutin.php',
+            url: '../SignUp/managerScrutin.php',
             type: 'GET',
             dataType: 'json',
             success: function(data) {
@@ -231,7 +232,9 @@ function signup() {
                 }
             },
             error: function(error) {
-                console.error('Erreur:', error);
+                //console.error('Erreur getScrutinToManage():', errorThrown);
+                console.error(error.responseText);
+                console.error('Erreur getScrutinToManage():', error); // ya un soucis ici
             }
         });
 

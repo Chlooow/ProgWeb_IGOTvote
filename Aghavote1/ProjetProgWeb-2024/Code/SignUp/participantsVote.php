@@ -47,6 +47,8 @@
     // Initialiser le compteur
     $count = 0;
     $dd="";
+    $scrutins=array();
+
 
     // Parcourir chaque scrutin
     foreach ($data as $i=>$scrutin) {

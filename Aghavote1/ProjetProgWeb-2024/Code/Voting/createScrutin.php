@@ -206,19 +206,65 @@ function removeOption() {
 }
 </script>
 
-<!-- Les procurations -->
-<!--<div class="row mt-4">
-            <div class="col-lg-4 offset-lg-4 bg-light rounded" id="optionsContainer">
-                <h5>Procurations </h5>
-                <div>
-                    <label for="">Personnes qui ont le droit de voter</label>
-                    <select name="participants[]" multiple class="form-control" id="userSelect">
-                    </select>
-                    <a href="" class="btn btn-primary btn-success ms-2" onClick="" id="boutonProcurations">Submit</a>
-                </div>
-            </div>
+<!-- procuration Section -->
+<!-- Procuration Section -->
+<div class="row mt-4">
+    <div class="col-lg-4 offset-lg-4 bg-light rounded" id="powerOfAttorneySection">
+        <h5>Les Procurations</h5>
+        <div id="procurationContainer">
+            <!-- Container to hold dynamically added procuration inputs -->
         </div>
--->
+        <button class="btn btn-success" onclick="addProcuration()">Add</button>
+    </div>
+</div>
+
+<script>
+    var procurationCount = 0;
+
+    function addProcuration() {
+        // Increment procuration count
+        procurationCount++;
+
+        // Create a new div to hold the procuration inputs
+        var newProcurationDiv = document.createElement('div');
+        newProcurationDiv.classList.add('form-group');
+
+        // Create input field for attorney name
+        var attorneyNameInput = document.createElement('input');
+        attorneyNameInput.type = 'text';
+        attorneyNameInput.name = 'attorneyName' + procurationCount;
+        attorneyNameInput.classList.add('form-control');
+        attorneyNameInput.placeholder = 'Nom de la personne';
+        newProcurationDiv.appendChild(attorneyNameInput);
+
+        // Create input field for number of votes
+        var attorneyVotesInput = document.createElement('input');
+        attorneyVotesInput.type = 'number';
+        attorneyVotesInput.name = 'attorneyVotes' + procurationCount;
+        attorneyVotesInput.classList.add('form-control');
+        attorneyVotesInput.min = 1;
+        attorneyVotesInput.max = 2;
+        attorneyVotesInput.placeholder = 'Un nombre entre 1 et 2 (inclus)';
+        newProcurationDiv.appendChild(attorneyVotesInput);
+
+        // Create a remove button
+        var removeButton = document.createElement('button');
+        removeButton.type = 'button';
+        removeButton.classList.add('btn', 'btn-danger', 'ms-2');
+        removeButton.textContent = 'Remove';
+        removeButton.addEventListener('click', function() {
+            newProcurationDiv.remove(); // Remove the div when remove button is clicked
+        });
+        newProcurationDiv.appendChild(removeButton);
+
+        // Append the new div to the container
+        document.getElementById('procurationContainer').appendChild(newProcurationDiv);
+    }
+</script>
+
+
+
+
 
 <!-- Les votants séléctionnés -->
 <script>

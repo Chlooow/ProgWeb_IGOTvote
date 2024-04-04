@@ -14,6 +14,8 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
     <script src="login.js"></script> <!-- Lien vers votre fichier JavaScript -->
+
+    <script src="../Voting/gererScrutin.php"></script>
   
 
     <style>
@@ -42,18 +44,12 @@
                         <button class="btn btn-success" type="button" name="button-manage" onclick="redirectToManage();">Gerer un scrutin deja existant</button>
 
                         <script>
+                              console.log("Redirecting to managing page...");
+
                             function redirectToManage() {
                                 window.location.href = "/ProjetProgWeb-2024/Code/Voting/gererScrutin.php";
                             }   
                         </script>
-
-                        <script>
-                            $(document).ready(function() {
-                                console.log("Redirecting to managing page...");
-                                getScrutinToManage();
-                                console.log("Redirected to managing page");
-                            });
-                                </script>
 
                         
                         <!-- Vérifier si l'utilisateur peut voter -->
@@ -67,9 +63,8 @@
 
                         <script>
                             $(document).ready(function() {
-                                console.log("Redirecting to voting page...");
                                 getScrutin();
-                                console.log("Redirected to voting page");
+                                getScrutinToManage() ;
                             });
                                 </script>
                         

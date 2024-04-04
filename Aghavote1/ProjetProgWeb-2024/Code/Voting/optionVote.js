@@ -13,7 +13,8 @@ function createScrutin() {
         options.push($("input[name='option" + i + "']").val());
     }
     var participants = $("#userSelectParticipant").val();
-    var votants = $("#userSelectVotant").val();
+    var attorneyName = $("#attorneyName").val(); // Get attorney's name
+    var attorneyVotes = $("#attorneyVotes").val();
     var dateDebut = $("input[name='dateDebut']").val();
     var dateFin = $("input[name='dateFin']").val();
     var alreadyVoted = $("#userSelectAlreadyVoted").val();
@@ -29,7 +30,8 @@ function createScrutin() {
             question: question,
             options: options,
             participants: participants,
-            votants: votants,
+            procurationName: attorneyName, // Pass attorney's name
+            procurationVotes: attorneyVotes,
             dateDebut: dateDebut,
             dateFin: dateFin,
             alreadyVoted: alreadyVoted
@@ -56,6 +58,8 @@ $(document).ready(function() {
 //});
 
 // ----------- détruire les scrutins ----------------
+
+//marche pas
 
 function destroyScrutin() {
     $.getJSON("Scrutins/Scrutins.json", function(data) {

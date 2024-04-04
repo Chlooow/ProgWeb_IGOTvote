@@ -1,13 +1,12 @@
 <?php
-
 session_start(); // Démarrer la session
 
     // Récupérer les données POST
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $_SESSION['username'] = $username;
-    $_SESSION['password'] = $password;
+    //$_SESSION['username'] = $username;
+    //$_SESSION['password'] = $password;
 
     // Lire le fichier JSON
     $json = file_get_contents('../../Datas/Login-data.JSON');
