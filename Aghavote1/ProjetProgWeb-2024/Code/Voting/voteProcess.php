@@ -15,13 +15,22 @@ $results = json_decode($resultsJson, true);
 $scrutinJson = file_get_contents('./Scrutins/Scrutins.json');
 $scrutins = json_decode($scrutinJson, true);
 
-// Add the new vote to the results array
-$results[$scrutinNumber] = array( 
-    array(
-    'votername' => $userVoting, // Replace 'User Name' with the actual voter's name
-    'option' => $selectedOption
-    )
-);
+// Check if scrutinNumber exists in the results
+if (array_key_exists($scrutinNumber, $results)) {
+    // Add the new vote to the existing results
+    $results[$scrutinNumber][] = array(
+        'votername' => $userVoting,
+        'option' => $selectedOption
+    );
+} else {
+    // Create a new entry for the scrutinNumber if it doesn't exist
+    $results[$scrutinNumber] = array(
+        array(
+            'votername' => $userVoting,
+            'option' => $selectedOption
+        )
+    );
+}
 
 foreach($scrutins as &$scrutin){
     if ($scrutin['numScrutin'] === $scrutinNumber) {

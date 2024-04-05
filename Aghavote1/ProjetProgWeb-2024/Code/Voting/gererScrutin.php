@@ -27,7 +27,7 @@ error_log("gg".$_SESSION['count']);
 <!-- Boutons sur le côté droit -->
 <div style="position: fixed; top: 90px; right: 0; transform: translate(0, -50%);">
     <button class="btn btn-success mb-4" id="closeScrutin" onclick="closeScrutin();">Fermer le scrutin</button><br>
-    <button class="btn btn-success mb-4" id="viewResults"> Voir les Résultats</button><br>
+    <button class="btn btn-success mb-4" id="viewResults"> Voir les Resultats</button><br>
     <button class="btn btn-success mb-4" id="destroyscrutin" data-id="" onclick="console.log('scrutinnnnnnnnn');destroyScrutin();">Detruire le Scrutin</button><br>
 </div>
 
@@ -294,9 +294,9 @@ error_log("gg".$_SESSION['count']);
                 <!-- Ceux qui ont déjà voté -->
                 <div class="row mt-4">
                     <div class="col-lg-4 offset-lg-4 bg-light rounded" id="optionsContainervoted">
-                        <h5>Personnes ayant déjà voté </h5>
+                    <h5>Personnes ayant déjà voté </h5>
                         <div>
-                            <label for="">Personnes ayant déjà voté</label>
+                            
                             <select name="participants[]" multiple class="form-control" id="userSelectAlreadyVoted">
                             </select>
                         </div>
@@ -445,12 +445,14 @@ function participationRate() {
 
         // Display the already voted users
         if (selectedScrutin.alreadyVoted) {
+            let stringy = "Personnes ayant déjà voté : ";
             var alreadyVotedHtml = "<select name='participants[]' multiple class='form-control'>";
+            alreadyVotedHtml += "<label >"+ stringy + "</label>";
             selectedScrutin.alreadyVoted.forEach(function(voter) {
                 alreadyVotedHtml += "<option value='" + voter + "'>" + voter + "</option>";
             });
             alreadyVotedHtml += "</select>";
-            alreadyVotedHtml += "<button class='btn btn-primary btn-success ms-2' id='boutonalreadyvoted'>Submit</button>";
+            //alreadyVotedHtml += "<button class='btn btn-primary btn-success ms-2' id='boutonalreadyvoted'>Submit</button>";
             $("#optionsContainervoted").html(alreadyVotedHtml);
         } else {
             $("#optionsContainervoted").html("None");
@@ -468,6 +470,11 @@ function participationRate() {
                 $("#closeScrutin").click(function () {
                     $("#viewResults").show();
                 });
+
+                // fonction pour afficher les resultats
+                $("#viewResults").click(function () {
+                    $("#votingResults").show();
+                });
 </script>
 
 
@@ -477,39 +484,6 @@ function participationRate() {
 
 <!-- -------------------------------------- -->
 
-            <script type="text/javascript">
-                
-
-                /* $(document).ready(function(){
-                $("#letsmanage").click(function(){
-                $("id-de-scrutin").hide();
-                $("#div-managing-scrutin").show();
-                $("#div-creation-scrutin").show();
-                $("#div-organisateur").show();
-                $("#div-date").show();
-                $("#div-lesvotants").show();
-                $("#div-alreadyvoteduser").show();
-
-                $("#choose-the-scrutins-box").hide(); 
-                $("#alert").hide(); 
-                $("#goback").show();
-            });
-
-            $("#goback").click(function(){
-                $("#div-managing-scrutin").hide();
-                $("#div-creation-scrutin").hide();
-                $("#div-organisateur").hide();
-                $("#div-date").hide();
-                $("#div-lesvotants").hide();
-                $("#id-de-scrutin").show();
-                $("#div-alreadyvoteduser").hide();
-
-                $("#choose-the-scrutins-box").show(); 
-                $("#alert").show(); 
-                $("#goback").hide();
-            });
-            });*/
-            </script>
 
             </body>
             </html>
