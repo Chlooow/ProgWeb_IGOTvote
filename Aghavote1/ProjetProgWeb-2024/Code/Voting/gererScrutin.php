@@ -27,7 +27,7 @@ error_log("gg".$_SESSION['count']);
 <!-- Boutons sur le côté droit -->
 <div style="position: fixed; top: 90px; right: 0; transform: translate(0, -50%);">
     <button class="btn btn-success mb-4" id="closeScrutin" onclick="closeScrutin();">Fermer le scrutin</button><br>
-    <button class="btn btn-success mb-4" id="viewResults"> Voir les Resultats</button><br>
+    <button class="btn btn-success mb-4" id="viewResults" onclick="getResults()"> Voir les Resultats</button><br>
     <button class="btn btn-success mb-4" id="destroyscrutin" data-id="" onclick="console.log('scrutinnnnnnnnn');destroyScrutin();">Detruire le Scrutin</button><br>
 </div>
 

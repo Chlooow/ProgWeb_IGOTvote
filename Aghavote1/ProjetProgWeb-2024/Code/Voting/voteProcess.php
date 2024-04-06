@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 // Receive the scrutin number and selected option from the AJAX request
 $scrutinNumber = $_POST['scrutinNumber'];
 $selectedOption = $_POST['selectedOption'];

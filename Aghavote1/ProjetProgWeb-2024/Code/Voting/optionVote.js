@@ -121,34 +121,6 @@ function closeScrutin() {
 
 // ----------- Vérifier si l'utilisateur a déjà voté ----------------
 
-function checkVoted() {
-    /*// Récupérer le numéro de scrutin
-    var numScrutin = $("#numScrutin").val();
-
-    // Envoyer une requête AJAX au fichier voteProcess.php pour vérifier si l'utilisateur a déjà voté
-    $.ajax({
-        url: 'voteProcess.php',
-        method: 'POST',
-        data: {
-            numScrutin: numScrutin,
-            action: 'checkVoted'
-        },
-        success: function(response) {
-            // Traiter la réponse du serveur
-            console.log(response);
-
-            // Vérifier si l'utilisateur a déjà voté
-            if (response == true) {
-                // Si l'utilisateur a déjà voté, afficher une alerte
-                alert("Vous avez déjà voté pour ce scrutin.");
-                $('#vote').prop('disabled', true); // Désactiver le bouton "Voter"
-            }
-        },
-        error: function(e) {
-            alert("Erreur lors de la vérification du vote AJAX : " + e.responseText);
-        }
-    });*/
-}
 
 // ----------- Résultats du scrutin ----------------
 function getResults() {
@@ -159,23 +131,49 @@ function getResults() {
     $.ajax({
         url: 'results.json',
         method: 'GET',
-        data: 'json',
+        dataType: 'json',
         success: function(response) {
             // Traiter la réponse du serveur
             console.log(response);
+
             // Vérifier si les résultats du scrutin existent pour le numéro de scrutin spécifié
             if (response.hasOwnProperty(numScrutin)) {
                 // Afficher les résultats du scrutin correspondant
                 var results = response[numScrutin];
-                var resultHtml = '<ul>';
+                
+                // Calculate vote counts and percentages
+                var optionCounts = {};
+                var totalVotes = results.length;
+                
                 for (var i = 0; i < results.length; i++) {
-                    resultHtml += '<li>' + results[i].votername + ' a voté pour l\'option ' + results[i].option + '</li>';
+                    var option = results[i].option;
+                    optionCounts[option] = (optionCounts[option] || 0) + 1;
                 }
-                resultHtml += '</ul>';
-                $("#results").html(resultHtml);
+                
+                var resultHtml = '';
+                
+                // Display vote counts and percentages
+                $.each(optionCounts, function(option, count) {
+                    var percentage = (count / totalVotes) * 100;
+                    resultHtml += '<p>' + count + ' personne(s) ont voté pour l\'option ' + option + ' (' + percentage.toFixed(2) + '%)</p>';
+                });
+                
+                // Determine the winning option based on the majority
+                var maxVotes = Math.max(...Object.values(optionCounts));
+                var winningOptions = Object.keys(optionCounts).filter(function(option) {
+                    return optionCounts[option] === maxVotes;
+                });
+                
+                if (winningOptions.length === 1) {
+                    resultHtml += '<p>La majorité a voté pour l\'option ' + winningOptions[0] + ', donc c\'est la gagnante !</p>';
+                } else {
+                    resultHtml += '<p>Il y a une égalité entre les options suivantes: ' + winningOptions.join(', ') + ', donc il n\'y a pas de gagnant.</p>';
+                }
+                
+                $("#votingResultsContent").html(resultHtml);
             } else {
                 // Aucun résultat trouvé pour le numéro de scrutin spécifié
-                $("#results").html("Aucun résultat trouvé pour ce scrutin.");
+                $("#votingResultsContent").html("Aucun résultat trouvé pour ce scrutin.");
             }
         },
         error: function(e) {
@@ -183,6 +181,8 @@ function getResults() {
         }
     });
 }
+
+
 
 
 

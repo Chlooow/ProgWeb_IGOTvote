@@ -111,6 +111,7 @@
             optionsHtml += "<option value='" + index + "'>" + option + "</option>";
         });
         $("#choix").html(optionsHtml);
+
     } else {
         console.log("Selected scrutin not found or doesn't have options.");
     }
@@ -158,11 +159,25 @@
                                 </select>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-success" onclick=" vote()">Voter</button>
+                        <button type="submit" id ="vote" class="btn btn-success" onclick=" vote()">Voter</button>
                     <!--</form>-->
                     
     </div>
 </div>
+
+<!-- Section to display results -->
+<div class="container mt-4">
+        <div class="row">
+            <div class="col-lg-4 offset-lg-4 bg-light rounded" id="votingResults">
+                <h5>Résultats du scrutin</h5>
+                <div id="votingResultsContent">
+                    <button type="submit" class="btn btn-success mb-4" id="backtoscrutin" onclick="getResults();">Voir les résultats</button>
+                    <!-- Results will be dynamically added here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
 <footer class="footer /* Couleur du texte */">© Chloe Makoundou Projet ProgWeb 2023-2024</footer>
 </body>
 
