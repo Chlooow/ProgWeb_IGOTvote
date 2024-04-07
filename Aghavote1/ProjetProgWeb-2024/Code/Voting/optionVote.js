@@ -151,10 +151,11 @@ function getResults(numScrutin) {
                 
                 var resultHtml = '';
                 
-                // Display vote counts and percentages
+                // Display vote counts, percentages, and absolute numbers
                 $.each(optionCounts, function(option, count) {
                     var percentage = (count / totalVotes) * 100;
                     resultHtml += '<p>' + count + ' personne(s) ont voté pour l\'option ' + option + ' (' + percentage.toFixed(2) + '%)</p>';
+                    resultHtml += '<p>Nombre absolu de votes pour ' + option + ': ' + count + '</p>';
                 });
                 
                 // Determine the winning option based on the majority
@@ -180,6 +181,7 @@ function getResults(numScrutin) {
         }
     });
 }
+
 
 
 

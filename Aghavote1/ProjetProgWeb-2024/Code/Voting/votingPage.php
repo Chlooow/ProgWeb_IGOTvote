@@ -63,7 +63,7 @@
 
                                     <?php foreach ($_SESSION['scrutins'] as $scrutin): ?>
                                         <option value="<?php echo $scrutin['numScrutin']; ?>">
-                                        <?php echo "Numéro du scrutin : " . $scrutin['numScrutin']; ?>
+                                        <?php echo "Numéro du scrutin : " . $scrutin['numScrutin'] . " statut " . $scrutin['statut']; ?>
                                     </option>
                                     <?php endforeach; ?>
                                 </select>
@@ -93,6 +93,14 @@
     });
     console.log("Selected scrutin:", selectedScrutin);
 
+    if(selectedScrutin.statut == false){
+        alert("Le scrutin est clos, vous ne pouvez pas voter ! Mais vous pouvez consulter les résultats");
+    } else {
+        $("#letsvote").click(function(){
+                $("#voting-box").show();
+                $("#choosingS-box").hide();
+                $("#alert").hide();
+            });
     // Display the scrutin information
     if (selectedScrutin && selectedScrutin.options) {
         console.log("Selected scrutin:", selectedScrutin);
@@ -117,6 +125,7 @@
         console.log("Selected scrutin not found or doesn't have options.");
     }
 }
+}
 
 function afficherResultats() {
     var selectedScrutinId = $("#choix-scrutin").val();
@@ -130,6 +139,11 @@ function afficherResultats() {
     var selectedScrutin = scrutinsData.find(function(scrutin) {
         return scrutin.numScrutin === selectedScrutinId;
     });
+
+    if(selectedScrutin.statut == true){
+        alert("Le scrutin est en cours, vous ne pouvez pas voir les résultats");
+        return;
+    }
 
     // Display the scrutin information
     if (selectedScrutin && selectedScrutin.options) {
@@ -170,11 +184,7 @@ function afficherResultats() {
 <!-- script pour afficher la boite de vote et faire disparaitre celle de choix de scrutin-->
 <script type= "text/javascript">
                 $(document).ready(function(){
-                $("#letsvote").click(function(){
-                $("#voting-box").show();
-                $("#choosingS-box").hide();
-                $("#alert").hide();
-            });
+                
             $("#backtoscrutin").click(function(){
             $("#voting-box").hide();
             $("#choosingS-box").show();
