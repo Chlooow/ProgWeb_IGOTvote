@@ -39,5 +39,75 @@
             "BamBam1a"
         ],
         "statut": false
+    },
+    {
+        "numScrutin": "113634",
+        "organisateur": "BamBam1a",
+        "titre": "Bambam's Cat",
+        "question": "What is Bambam's cat ?",
+        "options": [
+            "King",
+            "Pudding",
+            "Latte",
+            "Cupcake"
+        ],
+        "participants": [
+            "MarkTuan",
+            "Kyum",
+            "BamBam1a"
+        ],
+        "procuration": {
+            "Kyum": 2,
+            "BamBam1a": 1
+        },
+        "dateDebut": "",
+        "dateFin": "",
+        "alreadyVoted": null,
+        "statut": true
+    },
+    {
+        "numScrutin": "151759",
+        "organisateur": "BamBam1a",
+        "titre": "Subliminal",
+        "question": "What should be my next concept",
+        "options": [
+            "Cute",
+            "Sexy"
+        ],
+        "participants": [
+            "Kyum",
+            "BamBam1a",
+            "MarkTuan"
+        ],
+        "procuration": {
+            "": null
+        },
+        "dateDebut": "",
+        "dateFin": "",
+        "alreadyVoted": null,
+        "statut": true
+    },
+    {
+        "numScrutin": "180321",
+        "organisateur": "MarkTuan",
+        "titre": "tWITCH",
+        "question": "Should I live today ?",
+        "options": [
+            "yes",
+            "no"
+        ],
+        "participants": [
+            "Kyum",
+            "BamBam1a",
+            "JacksonWang852g7",
+            "MarkTuan"
+        ],
+        "procuration": {
+            "": ""
+        },
+        "dateDebut": "",
+        "dateFin": "",
+        "alreadyVoted": null,
+        "statut": true
     }
 ]

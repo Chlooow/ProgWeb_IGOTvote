@@ -206,7 +206,7 @@ function removeOption() {
 </script>
 
 <!-- procuration Section -->
-<!-- Procuration Section -->
+
 <div class="row mt-4">
     <div class="col-lg-4 offset-lg-4 bg-light rounded" id="powerOfAttorneySection">
         <h5>Les Procurations</h5>
@@ -295,9 +295,6 @@ $(document).ready(function() {
                 </div>
             </div>
         </div>  
-
-
-
 
 </body>
 </html>

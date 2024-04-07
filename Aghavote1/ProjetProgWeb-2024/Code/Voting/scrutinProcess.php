@@ -20,6 +20,9 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
     $alreadyVoted = $_POST['alreadyVoted'];
     $statut = $_POST['statut'];
 
+     // Convertir la valeur de statut en booléen si elle est égale à "true"
+     $statut = ($_POST['statut'] === 'true');
+
     // Créer un tableau avec les données du scrutin
     $scrutin = array(
         'numScrutin' => $numScrutin,

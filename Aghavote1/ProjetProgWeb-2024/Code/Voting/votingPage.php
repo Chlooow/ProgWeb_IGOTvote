@@ -43,7 +43,24 @@
     <div class="row">
         <div class="col-lg-4 offset-lg-4" id="alert">
             <div class="alert alert-success">
-                <strong id="result"> Bonjour <?php echo isset($_SESSION['username']) ? $_SESSION['username'] : ''; ?>, tu peux voter actuellement pour les scrutins suivants (<?php echo isset($_SESSION['count']) ? $_SESSION['count'] : ''; ?>), avec ... procurations.
+            <?php
+                // Check if the username is set in the session
+                if (isset($_SESSION['username'])) {
+                    // Display the username in the alert message
+                    echo '<strong>Bonjour ' . $_SESSION['username'] . ', tu peux voter actuellement pour les scrutins suivants (' . $_SESSION['count'] . '), avec procurations.';
+
+                    // Check if the user has procurations
+                    if (isset($_SESSION['userProcurations']) && !empty($_SESSION['userProcurations'])) {
+                        echo ' Tu as des procurations pour les scrutins suivants : ';
+                        foreach ($_SESSION['userProcurations'] as $numScrutin => $procurationCount) {
+                            echo 'Numéro de scrutin : ' . $numScrutin . ' (Procuration : ' . $procurationCount . '), ';
+                        }
+                    }
+                } else {
+                    // If the username is not set in the session, display a default message
+                    echo '<strong>Bonjour, tu peux voter actuellement pour les scrutins suivants (' . $_SESSION['count'] . ')';
+                }
+                ?>
                 </strong>
             </div>
         </div>
@@ -78,6 +95,7 @@
 </div>
 
 <script>
+getProcuration();
     //getScrutin();
     function handleSelectChange() {
     var selectedScrutinId = $("#choix-scrutin").val();

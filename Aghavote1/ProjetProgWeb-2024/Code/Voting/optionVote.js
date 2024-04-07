@@ -13,8 +13,14 @@ function createScrutin() {
         options.push($("input[name='option" + i + "']").val());
     }
     var participants = $("#userSelectParticipant").val();
-    var attorneyName = $("#attorneyName").val(); // Get attorney's name
-    var attorneyVotes = $("#attorneyVotes").val();
+    // Collect procuration data
+    var procuration = {};
+    $("#procurationContainer input[name^='attorneyName']").each(function(index) {
+        var attorneyName = $(this).val();
+        var attorneyVotes = $(this).closest('.form-group').find('input[type="number"]').val();
+        procuration[attorneyName] = attorneyVotes;
+    
+
     var dateDebut = $("input[name='dateDebut']").val();
     var dateFin = $("input[name='dateFin']").val();
     var alreadyVoted = $("#userSelectAlreadyVoted").val();
@@ -50,6 +56,7 @@ function createScrutin() {
             alert("Erreur lors de la création du scrutin AJax." + e.responseText);
         }
     });
+});
 }
 
 $(document).ready(function() {
@@ -184,6 +191,43 @@ function getResults(numScrutin) {
 
 
 
+// ----------- Procuration ----------------
+
+function getProcuration() {
+    let scrutinNumber = $("#selected-scrutin-num").text();
+
+    $.ajax({
+        url: 'howToVote.php',
+        type: 'GET',
+        success: function(response) {
+            // Check if the response is not empty (indicating success)
+            if (response.trim() !== '') {
+                // Parse the response as an array (since we're not returning JSON)
+                let data = JSON.parse(response);
+                
+                if (Object.keys(data).length > 0) {
+                    // Si l'utilisateur a des procurations, afficher les détails
+                    console.log("L'utilisateur a des procurations:");
+                    for (let numScrutin in data) {
+                        console.log("Numéro de scrutin:", numScrutin, "Procuration:", data[numScrutin]);
+                    }
+                } else {
+                    // Sinon, l'utilisateur n'a pas de procurations
+                    console.log("L'utilisateur n'a pas de procurations.");
+                }
+            } else {
+                // Handle the case where the response is empty (indicating an error)
+                console.log("Erreur: Aucune procuration trouvée pour cet utilisateur.");
+            }
+        },
+        error: function(error) {
+            console.error('Erreur getProcuration():', error);
+        }
+    });
+}
+
+
+
 
 
 
@@ -222,6 +266,7 @@ function vote() {
 $(document).ready(function() {
     //$('#destroyscrutin').click(function() {
         //destroyScrutin();
+        
     });
 //});
 
