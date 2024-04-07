@@ -24,7 +24,7 @@
     </style>
 
 <style type= "text/css">
-        #voting-box
+        #voting-box, #votingResults
         { display: none; }
     </style>
 </head>
@@ -69,6 +69,7 @@
                                 </select>
                         </div>
                         <button type="submit" class="btn btn-success mt-3" id="letsvote" onclick="handleSelectChange();">Voter</button>
+                        <button type="submit" class="btn btn-success mt-3" id="resultsbtn" onclick="afficherResultats();">Résultats</button>
                     <!--</form>-->
                 </div>
             </div>
@@ -117,6 +118,53 @@
     }
 }
 
+function afficherResultats() {
+    var selectedScrutinId = $("#choix-scrutin").val();
+    console.log("Selected value:", selectedScrutinId);
+
+    // Assuming your scrutins data is stored in a PHP array called $scrutinsData
+    var scrutinsData = <?php echo json_encode($_SESSION['scrutins']); ?>;
+    console.log("Scrutins data:", scrutinsData);
+
+    // Find the scrutin object with the selected ID from the session data
+    var selectedScrutin = scrutinsData.find(function(scrutin) {
+        return scrutin.numScrutin === selectedScrutinId;
+    });
+
+    // Display the scrutin information
+    if (selectedScrutin && selectedScrutin.options) {
+        console.log("Selected scrutin:", selectedScrutin);
+        // Update the HTML elements to display scrutin information
+        $("#voting-box").hide();
+        $("#votingResults").show();
+        $("#choosingS-box").hide();
+        $("#alert").hide();
+
+        // Get and display results
+        getResults(selectedScrutin.numScrutin);
+
+        var contentHtml = "<p>Numéro de scrutin: " + selectedScrutin.numScrutin + "</p>" +
+                "<p>Titre: " + selectedScrutin.titre + "</p>" +
+                "<p>Organisateur: " + selectedScrutin.organisateur + "</p>" +
+                "<p>Question: " + selectedScrutin.question + "</p>";
+
+        // Update the options in the select element
+        var optionsHtml = "";
+        selectedScrutin.options.forEach(function (option) {
+            optionsHtml += "<p>" + option + "</p>"; // Separate options with line breaks
+        });
+        // Append options to contentHtml
+        contentHtml += optionsHtml;
+
+        // Set the content to votingResultsContent
+        $("#votingResultsContent").html(contentHtml);
+
+
+    } else {
+        console.log("Selected scrutin not found or doesn't have options.");
+    }
+}
+
 </script>
 
 <!-- script pour afficher la boite de vote et faire disparaitre celle de choix de scrutin-->
@@ -131,6 +179,12 @@
             $("#voting-box").hide();
             $("#choosingS-box").show();
             $("#alert").show();
+    });
+    $("#backtoscrutin2").click(function(){
+            $("#voting-box").hide();
+            $("#choosingS-box").show();
+            $("#alert").show();
+            $("#votingResults").hide();
     });
 });
 </script>
@@ -169,9 +223,12 @@
 <div class="container mt-4">
         <div class="row">
             <div class="col-lg-4 offset-lg-4 bg-light rounded" id="votingResults">
+            <button type="submit" class="btn btn-success mb-4" id="backtoscrutin2">Back</button>
                 <h5>Résultats du scrutin</h5>
                 <div id="votingResultsContent">
-                    <button type="submit" class="btn btn-success mb-4" id="backtoscrutin" onclick="getResults();">Voir les résultats</button>
+                </div>
+                <p> _________________</p>
+                <div id="votingResultsContent2">
                     <!-- Results will be dynamically added here -->
                 </div>
             </div>

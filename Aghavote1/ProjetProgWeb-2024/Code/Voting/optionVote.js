@@ -123,15 +123,14 @@ function closeScrutin() {
 
 
 // ----------- Résultats du scrutin ----------------
-function getResults() {
-    // Récupérer le numéro de scrutin
-    var numScrutin = $("#numScrutin").val();
+function getResults(numScrutin) {
 
     // Envoyer une requête AJAX au fichier scrutinProcess.php pour récupérer les résultats du scrutin
     $.ajax({
         url: 'results.json',
         method: 'GET',
         dataType: 'json',
+        data: { numScrutin: numScrutin },
         success: function(response) {
             // Traiter la réponse du serveur
             console.log(response);
@@ -170,7 +169,7 @@ function getResults() {
                     resultHtml += '<p>Il y a une égalité entre les options suivantes: ' + winningOptions.join(', ') + ', donc il n\'y a pas de gagnant.</p>';
                 }
                 
-                $("#votingResultsContent").html(resultHtml);
+                $("#votingResultsContent2").html(resultHtml);
             } else {
                 // Aucun résultat trouvé pour le numéro de scrutin spécifié
                 $("#votingResultsContent").html("Aucun résultat trouvé pour ce scrutin.");
