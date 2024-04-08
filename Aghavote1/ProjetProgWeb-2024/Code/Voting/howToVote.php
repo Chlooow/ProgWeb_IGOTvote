@@ -15,12 +15,9 @@ $userProcurations = [];
 
 // Parcourir chaque scrutin
 foreach ($data as $i=>$scrutin) {
-    if(isset($scrutin['procuration']) && is_array($scrutin['procuration'])) {
-        // Vérifier si l'utilisateur est dans la liste des participants
-        if (in_array($username, $scrutin['procuration'])) {
-            // Ajouter la procuration de l'utilisateur au tableau des procurations
-            $userProcurations[$scrutin['numScrutin']] = $scrutin['procuration'][$username];
-        }
+    if(isset($scrutin['procuration']) && array_key_exists($username, $scrutin['procuration'])) {
+        // Ajouter la procuration de l'utilisateur au tableau des procurations
+        $userProcurations[$scrutin['numScrutin']] = $scrutin['procuration'][$username];
     }
 }
 // Si l'utilisateur a des procurations, stocker les procurations dans la session

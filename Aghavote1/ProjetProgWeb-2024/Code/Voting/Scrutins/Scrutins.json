@@ -62,48 +62,29 @@
         },
         "dateDebut": "",
         "dateFin": "",
-        "alreadyVoted": null,
+        "alreadyVoted": [
+            "BamBam1a"
+        ],
         "statut": true
     },
     {
-        "numScrutin": "151759",
+        "numScrutin": "215840",
         "organisateur": "BamBam1a",
-        "titre": "Subliminal",
-        "question": "What should be my next concept",
+        "titre": "Bambam's Wishlist",
+        "question": "What Should Bambam buy for his house ?",
         "options": [
-            "Cute",
-            "Sexy"
+            "haaha",
+            "zzdz",
+            "zrr\""
         ],
         "participants": [
+            "333cyj333",
+            "Jaybnow.hr",
             "Kyum",
-            "BamBam1a",
-            "MarkTuan"
+            "BamBam1a"
         ],
         "procuration": {
-            "": null
-        },
-        "dateDebut": "",
-        "dateFin": "",
-        "alreadyVoted": null,
-        "statut": true
-    },
-    {
-        "numScrutin": "180321",
-        "organisateur": "MarkTuan",
-        "titre": "tWITCH",
-        "question": "Should I live today ?",
-        "options": [
-            "yes",
-            "no"
-        ],
-        "participants": [
-            "Kyum",
-            "BamBam1a",
-            "JacksonWang852g7",
-            "MarkTuan"
-        ],
-        "procuration": {
-            "": ""
+            "Kyum": "2"
         },
         "dateDebut": "",
         "dateFin": "",
