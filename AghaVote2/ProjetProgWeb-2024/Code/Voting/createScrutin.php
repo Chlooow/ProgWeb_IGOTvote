@@ -16,11 +16,9 @@
 
 <a href="../SignUp/pageChoix.php" class="btn btn-sucess btn-secondary mt-2 d-block mx-auto" style="position: absolute; top: 0; left: 10px;">Back</a>
 
-<!-- Boutons sur le côté droit -->
-<div class="position-fixed top-100 end-0 translate-middle-y">
+<!-- Boutons sur le côté gauche -->
+<div style="position: fixed; top: 90px; right: 0; transform: translate(0, -50%);">
     <button class="btn btn-success mb-4" id="createScrutin" onclick="console.log('scrutinnnnnnnnn'); createScrutin();">Créer le scrutin</button><br>
-    <button class="btn btn-success mb-4" id="closeScrutin" disabled>Fermer le scrutin</button><br>
-    <button class="btn btn-success mb-4" id="viewResults" disabled>Voir les Résultats</button><br>
     <button class="btn btn-success mb-4" id="destroyscrutin" data-id="" onclick="console.log('scrutinnnnnnnnn');destroyScrutin();">Detruire le Scrutin</button><br>
 </div>
 
@@ -30,7 +28,7 @@
         <div class="col-lg-4 offset-lg-4" id="alert">
             <div class="alert alert-success">
                 <strong id="result"> Bonjour, pour créer un scrutin veuillez remplir tout les champs 
-                    puis cliquer sur start pour commencer le vote.
+                    puis cliquer sur "Crée le scrutin" pour pouvoir le crée.
                 </strong>
             </div>
         </div>
@@ -207,19 +205,65 @@ function removeOption() {
 }
 </script>
 
-<!-- Les procurations -->
-<!--<div class="row mt-4">
-            <div class="col-lg-4 offset-lg-4 bg-light rounded" id="optionsContainer">
-                <h5>Procurations </h5>
-                <div>
-                    <label for="">Personnes qui ont le droit de voter</label>
-                    <select name="participants[]" multiple class="form-control" id="userSelect">
-                    </select>
-                    <a href="" class="btn btn-primary btn-success ms-2" onClick="" id="boutonProcurations">Submit</a>
-                </div>
-            </div>
+<!-- procuration Section -->
+
+<div class="row mt-4">
+    <div class="col-lg-4 offset-lg-4 bg-light rounded" id="powerOfAttorneySection">
+        <h5>Les Procurations</h5>
+        <div id="procurationContainer">
+            <!-- Container to hold dynamically added procuration inputs -->
         </div>
--->
+        <button class="btn btn-success" onclick="addProcuration()">Add</button>
+    </div>
+</div>
+
+<script>
+    var procurationCount = 0;
+
+    function addProcuration() {
+        // Increment procuration count
+        procurationCount++;
+
+        // Create a new div to hold the procuration inputs
+        var newProcurationDiv = document.createElement('div');
+        newProcurationDiv.classList.add('form-group');
+
+        // Create input field for attorney name
+        var attorneyNameInput = document.createElement('input');
+        attorneyNameInput.type = 'text';
+        attorneyNameInput.name = 'attorneyName' + procurationCount;
+        attorneyNameInput.classList.add('form-control');
+        attorneyNameInput.placeholder = 'Nom de la personne';
+        newProcurationDiv.appendChild(attorneyNameInput);
+
+        // Create input field for number of votes
+        var attorneyVotesInput = document.createElement('input');
+        attorneyVotesInput.type = 'number';
+        attorneyVotesInput.name = 'attorneyVotes' + procurationCount;
+        attorneyVotesInput.classList.add('form-control');
+        attorneyVotesInput.min = 1;
+        attorneyVotesInput.max = 2;
+        attorneyVotesInput.placeholder = 'Un nombre entre 1 et 2 (inclus)';
+        newProcurationDiv.appendChild(attorneyVotesInput);
+
+        // Create a remove button
+        var removeButton = document.createElement('button');
+        removeButton.type = 'button';
+        removeButton.classList.add('btn', 'btn-danger', 'ms-2');
+        removeButton.textContent = 'Remove';
+        removeButton.addEventListener('click', function() {
+            newProcurationDiv.remove(); // Remove the div when remove button is clicked
+        });
+        newProcurationDiv.appendChild(removeButton);
+
+        // Append the new div to the container
+        document.getElementById('procurationContainer').appendChild(newProcurationDiv);
+    }
+</script>
+
+
+
+
 
 <!-- Les votants séléctionnés -->
 <script>
@@ -251,20 +295,6 @@ $(document).ready(function() {
                 </div>
             </div>
         </div>  
-
-<!-- Ceux qui ont déjà voté -->
-<div class="row mt-4">
-            <div class="col-lg-4 offset-lg-4 bg-light rounded" id="optionsContainervoted">
-                <h5>Personnes ayant déjà voté </h5>
-                <div>
-                    <label for="">Personnes ayant déjà voté</label>
-                    <select name="participants[]" multiple class="form-control" id="userSelectAlreadyVoted">
-                    </select>
-                    <button  class="btn btn-primary btn-success ms-2"  id="boutonalreadyvoted">Submit</button>
-                </div>
-            </div>
-        </div>
-
 
 </body>
 </html>

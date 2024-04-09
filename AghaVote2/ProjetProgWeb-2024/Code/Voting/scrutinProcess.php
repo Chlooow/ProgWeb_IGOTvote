@@ -1,6 +1,9 @@
 <?php
 session_start();
 header('Content-Type: application/json');
+
+// PHP code to process the scrutin creation
+
 // Vérifier si la requête est une requête AJAX
 if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
     // Récupérer les données du formulaire
@@ -10,10 +13,15 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
     $question = $_POST['question'];
     $options = $_POST['options'];
     $participants = $_POST['participants'];
-    $votants = $_POST['votants'];
+    $procurationName = $_POST['procurationName'];
+    $procurationVotes = $_POST['procurationVotes'];
     $dateDebut = $_POST['dateDebut'];
     $dateFin = $_POST['dateFin'];
     $alreadyVoted = $_POST['alreadyVoted'];
+    $statut = $_POST['statut'];
+
+     // Convertir la valeur de statut en booléen si elle est égale à "true"
+     $statut = ($_POST['statut'] === 'true');
 
     // Créer un tableau avec les données du scrutin
     $scrutin = array(
@@ -23,10 +31,13 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
         'question' => $question,
         'options' => $options,
         'participants' => $participants,
-        'votants' => $votants,
+        'procuration' => array(
+            $procurationName => $procurationVotes
+        ),
         'dateDebut' => $dateDebut,
         'dateFin' => $dateFin,
-        'alreadyVoted' => $alreadyVoted
+        'alreadyVoted' => $alreadyVoted,
+        'statut' => $statut
     );
 
    // Lire le fichier JSON existant

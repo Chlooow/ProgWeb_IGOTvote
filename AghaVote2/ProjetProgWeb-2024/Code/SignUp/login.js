@@ -189,11 +189,12 @@ function signup() {
 
        // Fonction de récupération du statut votant de l'utilisateur
     function getScrutin() {
+        //console.log("getScrutin");
         // Sélectionnez le bouton
         var button = $("button[name=btnvote]");
         // Faites l'appel AJAX
         $.ajax({
-            url: 'participantsVote.php',
+            url: '../SignUp/participantsVote.php',
             type: 'GET',
             dataType: 'json',
             success: function(data) {
@@ -207,9 +208,38 @@ function signup() {
                 }
             },
             error: function(error) {
-                console.error('Erreur:', error);
+                //console.error(error.responseText);
+                console.error('Erreur getScrutin():', error);// ya un soucis ici
             }
         });
+    }
+
+    function getScrutinToManage() {
+        console.log("getScrutinToManage")
+        // Sélectionnez le bouton
+        var button = $("button[name=button-manage]");
+        // Faites l'appel AJAX
+        $.ajax({
+            url: '../SignUp/managerScrutin.php',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                console.log(data)
+                // Si l'utilisateur ne manage pas, désactivez le bouton
+                if (data==0) {
+                    console.log(data)
+                    button.prop('disabled', true);
+                } else {
+                    button.prop('disabled', false);
+                }
+            },
+            error: function(error) {
+                //console.error('Erreur getScrutinToManage():', errorThrown);
+                console.error(error.responseText);
+                console.error('Erreur getScrutinToManage():', error); 
+            }
+        });
+
     }
 
     var utilisateurs;

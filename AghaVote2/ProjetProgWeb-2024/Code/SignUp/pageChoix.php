@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> AghaVote </title>
+    <title> IGOTVote </title>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sign-in/">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -14,6 +14,8 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
     <script src="login.js"></script> <!-- Lien vers votre fichier JavaScript -->
+
+    <script src="../Voting/gererScrutin.php"></script>
   
 
     <style>
@@ -30,16 +32,27 @@
         <main>
             <div class="py-5 text-center bg-light rounded">
                 <img class="d-block mx-auto mb-4" src="\ProjetProgWeb-2024\Assets\Ahgalogo.svg" alt="" width="72" height="57">
-                <h2> Bienvenue sur AghaVote </h2>
+                <h2> Bienvenue sur IGOTVote </h2>
                 <h2> Qu'est-ce que vous voulez faire 
                     <?php
                         echo isset($_SESSION['username']) ? $_SESSION['username'] : ''; ?> ? </h2>
                 <div class="d-grid gap-2 col-6 mx-auto">
                     
                         <a href="/ProjetProgWeb-2024/Code/Voting/createScrutin.php" class="btn btn-success" type="button">Créer un scrutin</a>
-                        <button class="btn btn-success" type="button" disabled>Gerer un scrutin deja existant</button>
-                        <!-- Vérifier si l'utilisateur peut voter -->
 
+                        <!-- Vérifier si l'utilisateur peut gérer un scrutin -->
+                        <button class="btn btn-success" type="button" name="button-manage" onclick="redirectToManage();">Gerer un scrutin deja existant</button>
+
+                        <script>
+                              console.log("Redirecting to managing page...");
+
+                            function redirectToManage() {
+                                window.location.href = "/ProjetProgWeb-2024/Code/Voting/gererScrutin.php";
+                            }   
+                        </script>
+
+                        
+                        <!-- Vérifier si l'utilisateur peut voter -->
                         <button class="btn btn-success" name="btnvote" onclick="redirectToVotingPage();" type="button" > Voter </button>
 
                         <script>
@@ -49,11 +62,9 @@
                         </script>
 
                         <script>
-                            $(document).ready(function() {
-                                console.log("Redirecting to voting page...");
+                            
+                                getScrutinToManage() ;
                                 getScrutin();
-                                console.log("Redirected to voting page");
-                            });
                                 </script>
                         
                         <!-- deconnexion -->
@@ -62,5 +73,7 @@
 
             </div>
         </div>
+        <footer class="footer /* Couleur du texte */">© Chloe Makoundou Projet ProgWeb 2023-2024</footer>
     </body>
+    
     </html>
