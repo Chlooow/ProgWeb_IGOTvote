@@ -201,6 +201,7 @@ function getProcuration() {
         type: 'GET',
         success: function(response) {
             // Check if the response is not empty (indicating success)
+            console.log(response);
             if (response.trim() !== '') {
                 // Parse the response as an array (since we're not returning JSON)
                 let data = JSON.parse(response);

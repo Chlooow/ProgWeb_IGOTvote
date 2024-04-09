@@ -194,7 +194,7 @@ function signup() {
         var button = $("button[name=btnvote]");
         // Faites l'appel AJAX
         $.ajax({
-            url: 'participantsVote.php',
+            url: '../SignUp/participantsVote.php',
             type: 'GET',
             dataType: 'json',
             success: function(data) {

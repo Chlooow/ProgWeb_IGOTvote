@@ -15,7 +15,6 @@
     $dd="";
     $scrutins=array();
 
-
     // Parcourir chaque scrutin
     foreach ($data as $i=>$scrutin) {
         $dd .= $json;
@@ -37,14 +36,14 @@
         ];
         }
     }
-    }
+}
 
 // Stocker le compteur dans une variable de session
 $_SESSION['count'] = $count;
 
 // Envoyer le nombre de scrutins dans la réponse
 $_SESSION['scrutins'] = $scrutins;
-
+error_log("ff".$_SESSION['count']);
 echo $count;
 
 ?>

@@ -29,5 +29,5 @@ if (!empty($userProcurations)) {
 }
 
 // Retourner une réponse vide
-echo "";
+echo json_encode($userProcurations);
 ?>

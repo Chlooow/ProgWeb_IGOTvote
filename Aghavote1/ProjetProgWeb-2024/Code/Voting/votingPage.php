@@ -47,7 +47,7 @@
                 // Check if the username is set in the session
                 if (isset($_SESSION['username'])) {
                     // Display the username in the alert message
-                    echo '<strong>Bonjour ' . $_SESSION['username'] . ', tu peux voter actuellement pour les scrutins suivants (' . $_SESSION['count'] . '), avec procurations.';
+                    echo '<strong>Bonjour ' . $_SESSION['username'] . ', tu peux voter actuellement pour les scrutins suivants (' . $_SESSION['count'] . ').';
 
                     // Check if the user has procurations
                     if (isset($_SESSION['userProcurations']) && !empty($_SESSION['userProcurations'])) {
