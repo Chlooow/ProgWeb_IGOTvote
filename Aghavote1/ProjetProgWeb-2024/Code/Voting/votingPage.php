@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,7 +37,6 @@
 <a href="../SignUp/pageChoix.php" class="btn btn-sucess btn-secondary mt-2 d-block mx-auto" style="position: absolute; top: 0; left: 10px;">Back</a>
 
 <!-- les scrutins possibles auquels User peu voter -->
-
 <!-- ALERTE -->
 <div class="container mt-4">
     <div class="row">
@@ -96,6 +95,7 @@
 
 <script>
 getProcuration();
+
     //getScrutin();
     function handleSelectChange() {
     var selectedScrutinId = $("#choix-scrutin").val();
@@ -111,14 +111,26 @@ getProcuration();
     });
     console.log("Selected scrutin:", selectedScrutin);
 
+    if(checkIfVoted(selectedScrutin.numScrutin) == true){
+        //alert("Vous avez déjà voté pour ce scrutin");
+        $("#letsvote").prop(disabled, true);
+        return;
+    }
+
     if(selectedScrutin.statut == false){
         alert("Le scrutin est clos, vous ne pouvez pas voter ! Mais vous pouvez consulter les résultats");
     } else {
-        $("#letsvote").click(function(){
-                $("#voting-box").show();
-                $("#choosingS-box").hide();
-                $("#alert").hide();
-            });
+        //if(checkIfVoted()){
+           /// alert("Vous avez déjà voté pour ce scrutin");
+            //return;
+        //} else {
+                // Display the voting box
+            /*$("#letsvote").click(function(){
+                    $("#voting-box").show();
+                    $("#choosingS-box").hide();
+                    $("#alert").hide();
+                });*/
+        //}
     // Display the scrutin information
     if (selectedScrutin && selectedScrutin.options) {
         console.log("Selected scrutin:", selectedScrutin);
@@ -160,6 +172,12 @@ function afficherResultats() {
 
     if(selectedScrutin.statut == true){
         alert("Le scrutin est en cours, vous ne pouvez pas voir les résultats");
+        return;
+    }
+
+    if(checkIfVoted(scrutinNumber) == true){
+        //alert("Vous avez déjà voté pour ce scrutin");
+        $("#vote").prop(disabled, true);
         return;
     }
 

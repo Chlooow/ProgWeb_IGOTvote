@@ -128,6 +128,33 @@ function closeScrutin() {
 
 // ----------- Vérifier si l'utilisateur a déjà voté ----------------
 
+function checkIfVoted(numScrutin) {
+    // Récupérer le numéro de scrutin
+    //var numScrutin = $("#numScrutin").val();
+
+    // Envoyer une requête AJAX au fichier restrictionVote.php pour vérifier si l'utilisateur a déjà voté
+    $.ajax({
+        url: 'restrictionVote.php',
+        method: 'GET',
+        data: { numScrutin: numScrutin },
+        success: function(response) {
+            // Traiter la réponse du serveur
+            console.log(response);
+            console.log(response.alreadyVoted);
+
+            // Vérifier si l'utilisateur a déjà voté
+            if (response && response.alreadyVoted == true) {
+                // Si l'utilisateur a déjà voté, afficher une alerte
+                alert("Vous avez déjà voté pour ce scrutin.");
+                //$('#letsvote').prop('disabled', true); // Désactiver le bouton "Voter"
+            }
+        },
+        error: function(e) {
+            alert("Erreur lors de la vérification du vote AJAX : " + e.responseText);
+        }
+    });
+}
+
 
 // ----------- Résultats du scrutin ----------------
 function getResults(numScrutin) {
@@ -228,13 +255,10 @@ function getProcuration() {
 }
 
 
-
-
-
-
 // ----------- Voter ----------------
 
 function vote() {
+    
     // Récupérer les données du formulaire
     var scrutinNumber = $("#selected-scrutin-num").text();
     var vote = $("#choix").val();
