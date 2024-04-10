@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Page de création d'un scrutin -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">

@@ -1,6 +1,11 @@
 <?php
 session_start(); // Démarrer la session
-
+/**
+ * File Name: howToVote.php
+ * relies on: Login-data.JSON and optionVote.js
+ * AJAX request to check if the user has power of attorney : getProcuration().
+ * This code reads the JSON file and si whether the user has power of attorney.
+ */
 // Récupérer le nom d'utilisateur de la session
 $username = isset($_SESSION['username']) ? $_SESSION['username'] : '';
 

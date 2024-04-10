@@ -1,4 +1,6 @@
 <?php session_start();?>
+<!-- Page d'accueil de l'utilisateur et ses choix de navigation possible
+    file name : pageChoix.php -->
 
 <!doctype html>
 <html lang="en" data-bs-theme="auto">

@@ -2,6 +2,7 @@
 error_log("gg".$_SESSION['count']);
 ?>
 <!DOCTYPE html>
+<!--page pour gérer un scrutin-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">

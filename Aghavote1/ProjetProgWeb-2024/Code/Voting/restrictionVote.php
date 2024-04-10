@@ -1,5 +1,10 @@
 <?php
 session_start();
+/**
+ * File Name: restrictionVote.php
+ * relies on: Login-data.JSON and optionVote.js
+ * This code reads the JSON file and checks if the user has already voted.
+ */
 
 // Retrieve scrutin number and session username
 $numScrutin = $_GET['numScrutin'];
@@ -11,6 +16,7 @@ $data = json_decode($json, true);
 
 // Initialize variable to track if user has already voted
 $alreadyVoted = false;
+$votingpower = 0;
 
 // Iterate through scrutins to find the specified one
 foreach ($data as $scrutin) {
@@ -18,10 +24,12 @@ foreach ($data as $scrutin) {
         // Check if the session username is in the alreadyVoted array
         if (in_array($username, $scrutin['alreadyVoted'])) {
             $alreadyVoted = true;
+            $votingpower = 0;
             //break;
         }
         if($scrutin['procuration'] && isset($scrutin['procuration'][$username]) && $scrutin['procuration'][$username] > 0){
             $alreadyVoted = false;
+            $votingpower = $scrutin['procuration'][$username];
         }
     }
 }
@@ -34,5 +42,6 @@ foreach ($data as $scrutin) {
 
 // Send JSON response
 header('Content-Type: application/json');
-echo json_encode(array('alreadyVoted' => $alreadyVoted));
+echo json_encode(array('alreadyVoted' => $alreadyVoted, 'votingpower' => $votingpower));
+//echo json_encode(array('votingpower' => $votingpower));
 ?>

@@ -1,5 +1,10 @@
 <?php
     session_start(); // Démarrer la session
+    /**
+     * File Name: participantVote.php
+     * relies on: Login-data.JSON and login.js
+     * This code reads the JSON file containing login data and checks if the connected user is a participant to a x vote.
+     */
 
     // Récupérer le nom d'utilisateur de la session
     $username = isset($_SESSION['username']) ? $_SESSION['username'] : '';

@@ -1,4 +1,10 @@
 
+/**
+ * File Name: optionVote.js
+ * relies on: Login-data.JSON 
+ * All the functions related to voting options are defined here.
+ * Use AJAX or not, depending on the requirements.
+ */
 // ----------- Valider les options de vote ----------------
 
 function createScrutin() {
@@ -68,7 +74,7 @@ $(document).ready(function() {
 
 // ----------- détruire les scrutins ----------------
 
-//marche pas
+// note : doesn't work yet
 
 function destroyScrutin() {
     $.getJSON("Scrutins/Scrutins.json", function(data) {
@@ -141,13 +147,18 @@ function checkIfVoted(numScrutin) {
             // Traiter la réponse du serveur
             console.log(response);
             console.log(response.alreadyVoted);
+            console.log(response.votingpower);
 
             // Vérifier si l'utilisateur a déjà voté
             if (response && response.alreadyVoted == true) {
                 // Si l'utilisateur a déjà voté, afficher une alerte
+                $('#vote').prop('disabled', true); // Désactiver le bouton "Voter"
                 alert("Vous avez déjà voté pour ce scrutin.");
-                //$('#letsvote').prop('disabled', true); // Désactiver le bouton "Voter"
+            while(response && response.votingpower != 0){
+                $('#vote').prop('disabled', false); // Activer le bouton "Voter"
             }
+            $('#vote').prop('disabled', true); // Désactiver le bouton "Voter"
+        }
         },
         error: function(e) {
             alert("Erreur lors de la vérification du vote AJAX : " + e.responseText);
@@ -294,4 +305,3 @@ $(document).ready(function() {
         
     });
 //});
-

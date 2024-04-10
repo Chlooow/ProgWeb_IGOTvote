@@ -1,12 +1,17 @@
 <?php
 session_start();
 
+/**
+ * File Name: voteProcess.php
+ * relies on: Login-data.JSON and optionVote.js
+ * this code process the vote and store it in the JSON file : results.json
+ */
+
 // Receive the scrutin number and selected option from the AJAX request
 $scrutinNumber = $_POST['scrutinNumber'];
 $selectedOption = $_POST['selectedOption'];
 $userVoting = $_SESSION['username'];
 
-// Validate and sanitize the input data (omitted for brevity)
 
 // Load the existing results from results.json
 $resultsJson = file_get_contents('results.json');
@@ -39,6 +44,15 @@ foreach($scrutins as &$scrutin){
             $scrutin['alreadyVoted'] = array();
         }
         $scrutin['alreadyVoted'][] = $userVoting;
+        if (isset($scrutin['procuration']) && isset($scrutin['procuration'][$userVoting])) {
+            
+           // error_log("Processing vote for $userVoting in scrutin $scrutinNumber $scrutin['procuration'][$userVoting]");
+
+            $procuminus= $scrutin['procuration'][$userVoting];
+            if($procuminus != 0){
+                $scrutin['procuration'][$userVoting] = $procuminus - 1;
+            }
+        }
     }
 }
 unset($scrutin);

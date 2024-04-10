@@ -1,5 +1,10 @@
 <?php
 session_start(); // Démarrer la session
+/**
+ * File Name: login.php
+ * relies on: Login-data.JSON and login.js
+ * This code reads the JSON file containing login data and checks if the provided credentials are correct.
+ */
 
     // Récupérer les données POST
     $username = $_POST['username'];

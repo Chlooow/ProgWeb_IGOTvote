@@ -1,5 +1,10 @@
 <?php
     session_start(); // Démarrer la session
+    /**
+     * File Name: logout.php
+     * relies on: login.js
+     * This code destroys the session and redirects the user to the login page.
+     */
     // Détruire toutes les variables de session
     session_unset();
     // Détruire la session

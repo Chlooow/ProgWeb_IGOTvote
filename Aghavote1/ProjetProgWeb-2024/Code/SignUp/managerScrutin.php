@@ -1,5 +1,10 @@
 <?php
     session_start(); // Démarrer la session
+    /**
+     * File Name: managerScrutin.php
+     * relies on: Login-data.JSON and login.js
+     * This code reads the JSON file containing login data and checks if the provided credentials are correct.
+     */
 
     function updateScrutinStatus($numScrutin, $newStatus) {
         // Lire le fichier JSON

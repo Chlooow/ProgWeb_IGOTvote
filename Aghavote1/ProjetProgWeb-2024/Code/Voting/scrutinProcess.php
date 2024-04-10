@@ -1,6 +1,11 @@
 <?php
 session_start();
 header('Content-Type: application/json');
+/**
+ * File Name: scrutinProcess.php
+ * relies on: Login-data.JSON and optionVote.js and createScrutin();
+ * this code create a scrutin and store it in the JSON file : Scrutins.json
+ */
 
 // PHP code to process the scrutin creation
 

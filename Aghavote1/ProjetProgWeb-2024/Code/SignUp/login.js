@@ -1,62 +1,9 @@
-/*$(document).ready(function() {
-    // Charger le fichier JSON Login-data.json
-    $.getJSON("/ProjetProgWeb-2024/Datas/Login-data.JSON", function(data) {
-        // Manipuler les données ici
-        var utilisateurs = data.utilisateurs;
+/** File Name: login.js
+ * relies on many php files
+ * Ce code ajoute un nouvel utilisateur au fichier JSON contenant les données de connexion.
+ */
 
-        // Gérer la soumission du formulaire de connexion
-        $("#login-frm").submit(function(event) {
-            event.preventDefault();
-
-            // Récupérer les valeurs des champs du formulaire
-            var username = $("input[name='username']").val();
-            var password = $("input[name='pswrd']").val();
-
-            // Vérifier les informations d'identification de l'utilisateur
-            var user = utilisateurs.find(function(u) {
-                return u["Username "] === username && u.password === password;
-            });
-
-            // Si les informations sont correctes, rediriger vers une autre page
-            if (user) {
-                alert("Connexion réussie !");
-                window.location.href = "pageChoix.html"; // Rediriger vers la page protégée
-            } else {
-                // Afficher un message d'erreur si les informations sont incorrectes
-                alert("Nom d'utilisateur ou mot de passe incorrect !");
-            }
-        });
-    });
-});*/
-
-/*function login(utilisateurs) {
-    // Gérer la soumission du formulaire de connexion
-    $("#login-frm").submit(function(event) {
-        event.preventDefault();
-
-        // Récupérer les valeurs des champs du formulaire
-        var username = $("input[name='username']").val();
-        var password = $("input[name='pswrd']").val();
-
-        // Vérifier les informations d'identification de l'utilisateur
-        var user = utilisateurs.find(function(u) {
-            return u["Username "] === username && u.password === password;
-        });
-
-        // Ajax
-
-        // Si les informations sont correctes, rediriger vers une autre page
-        if (user) {
-            alert("Connexion réussie !");
-            window.location.href = "pageChoix.html"; // Rediriger vers la page protégée
-        } else {
-            // Afficher un message d'erreur si les informations sont incorrectes
-            alert("Nom d'utilisateur ou mot de passe incorrect !");
-        }
-    });
-}*/
-
-// Fonction de connexion
+// -------- Fonction de connexion
 
 function login() {
     // Gérer la soumission du formulaire de connexion
@@ -102,7 +49,7 @@ function login() {
         });
 }
 
-// fonction de sign up
+// ------------- fonction de sign up
 
 function signup() {
         // Gérer la soumission du formulaire de sign up
@@ -149,7 +96,7 @@ function signup() {
     }
 
 
-    // Fonction de déconnexion
+    // ----------- Fonction de déconnexion
 
     function logout() {
         // Gérer la soumission du formulaire de connexion
@@ -213,6 +160,12 @@ function signup() {
             }
         });
     }
+
+     /* On va chercher dans la base de données Scrutins.json et regarder dans le champs organisateur si l'utilisateur est un orga ou non
+       si oui, alors on lui affiche les numéros des scrutins qu'il peut gérer
+       il cliquera sur le numéro du scrutin pour gerer.
+       sinon, le bouton de gestion est désactivé dans pageChoix.php
+    */
 
     function getScrutinToManage() {
         console.log("getScrutinToManage")

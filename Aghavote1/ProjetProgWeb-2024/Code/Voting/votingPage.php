@@ -1,5 +1,6 @@
 <?php session_start();?>
 <!DOCTYPE html>
+<!-- page de vote pour un scrutin -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -65,6 +66,8 @@
         </div>
     </div>
 
+    <!-- choix de scrutin -->
+
 <div class="container">
         <div class="row">
         <main>
@@ -120,17 +123,7 @@ getProcuration();
     if(selectedScrutin.statut == false){
         alert("Le scrutin est clos, vous ne pouvez pas voter ! Mais vous pouvez consulter les résultats");
     } else {
-        //if(checkIfVoted()){
-           /// alert("Vous avez déjà voté pour ce scrutin");
-            //return;
-        //} else {
-                // Display the voting box
-            /*$("#letsvote").click(function(){
-                    $("#voting-box").show();
-                    $("#choosingS-box").hide();
-                    $("#alert").hide();
-                });*/
-        //}
+    
     // Display the scrutin information
     if (selectedScrutin && selectedScrutin.options) {
         console.log("Selected scrutin:", selectedScrutin);
@@ -175,11 +168,6 @@ function afficherResultats() {
         return;
     }
 
-    if(checkIfVoted(scrutinNumber) == true){
-        //alert("Vous avez déjà voté pour ce scrutin");
-        $("#vote").prop(disabled, true);
-        return;
-    }
 
     // Display the scrutin information
     if (selectedScrutin && selectedScrutin.options) {
@@ -265,6 +253,26 @@ function afficherResultats() {
     </div>
 </div>
 
+<script>
+    var selectedScrutinId = $("#choix-scrutin").val();
+    console.log("Selected value:", selectedScrutinId);
+
+    // Assuming your scrutins data is stored in a PHP array called $scrutinsData
+    var scrutinsData = <?php echo json_encode($_SESSION['scrutins']); ?>;
+    console.log("Scrutins data:", scrutinsData);
+
+    // Find the scrutin object with the selected ID from the session data
+    var selectedScrutin = scrutinsData.find(function(scrutin) {
+        return scrutin.numScrutin === selectedScrutinId;
+    });
+
+    if(checkIfVoted(selectedScrutin) == true){
+        //alert("Vous avez déjà voté pour ce scrutin");
+        $("#vote").prop(disabled, true);
+        //return;
+    }
+</script>
+
 <!-- Section to display results -->
 <div class="container mt-4">
         <div class="row">
@@ -285,6 +293,5 @@ function afficherResultats() {
 </body>
 
 </html>
-
 
 

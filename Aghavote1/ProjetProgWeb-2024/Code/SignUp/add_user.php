@@ -1,5 +1,11 @@
 <?php
 
+/** File Name: add_user.php
+ * relies on: Login-data.JSON and signup() in login.js
+ * relié à l'appel AJAX dans login.js
+ * Ce code ajoute un nouvel utilisateur au fichier JSON contenant les données de connexion qu'il fournit.
+ */
+
 // Récupérer les données du formulaire
 $name = $_POST['fullName'];
 $username = $_POST['Username'];

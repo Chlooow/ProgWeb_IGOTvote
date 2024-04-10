@@ -1,4 +1,10 @@
 <!doctype html>
+
+<!-- File Name : index.php
+ * relies on: login.js
+ * relié à l'appel AJAX dans login.js.js
+ * Ce code se charge de la connection et du register.-->
+
 <html lang="en" data-bs-theme="auto">
 <head>
     <meta charset="utf-8">

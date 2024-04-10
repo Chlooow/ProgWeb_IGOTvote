@@ -1,20 +1,5 @@
 [
     {
-        "numScrutin": "081313",
-        "organisateur": "BamBam1a",
-        "titre": "",
-        "question": "",
-        "options": null,
-        "participants": null,
-        "procuration": {
-            "": null
-        },
-        "dateDebut": "",
-        "dateFin": "",
-        "alreadyVoted": null,
-        "statut": true
-    },
-    {
         "numScrutin": "083250",
         "organisateur": "BamBam1a",
         "titre": "coco",
