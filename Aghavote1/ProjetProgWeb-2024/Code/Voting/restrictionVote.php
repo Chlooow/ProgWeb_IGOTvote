@@ -18,10 +18,19 @@ foreach ($data as $scrutin) {
         // Check if the session username is in the alreadyVoted array
         if (in_array($username, $scrutin['alreadyVoted'])) {
             $alreadyVoted = true;
-            break;
+            //break;
+        }
+        if($scrutin['procuration'] && isset($scrutin['procuration'][$username]) && $scrutin['procuration'][$username] > 0){
+            $alreadyVoted = false;
         }
     }
 }
+
+// Check if the user is in "procuration"
+/*if (isset($scrutin['procuration']) && isset($scrutin['procuration'][$username])) {
+    // Allow the user to vote again based on the value in "procuration"
+    $alreadyVoted = $scrutin['procuration'][$username] > 0;
+}*/
 
 // Send JSON response
 header('Content-Type: application/json');
