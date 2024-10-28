@@ -11,15 +11,15 @@ Les résultats sont présentés de manière claire et transparente pour tous les
 ## Fonctionnalités Principales
 Aghavote inclut les fonctionnalités suivantes :
 
-**Authentification des utilisateurs** : Les organisateurs et votants s’authentifient via un login et un mot de passe.
-**Création et gestion de scrutins** : L’organisateur peut créer des questions de vote avec plusieurs options de réponse, gérer la liste des votants, et assigner des procurations.
-**Vote anonyme** : Les votes sont anonymes et sécurisés ; la liste des personnes ayant voté est tenue secrète.
-**Gestion des procurations** : Les votants peuvent déléguer leur droit de vote, avec des consignes spécifiques si nécessaire.
+- **Authentification des utilisateurs** : Les organisateurs et votants s’authentifient via un login et un mot de passe.
+- **Création et gestion de scrutins** : L’organisateur peut créer des questions de vote avec plusieurs options de réponse, gérer la liste des votants, et assigner des procurations.
+- **Vote anonyme** : Les votes sont anonymes et sécurisés ; la liste des personnes ayant voté est tenue secrète.
+- **Gestion des procurations** : Les votants peuvent déléguer leur droit de vote, avec des consignes spécifiques si nécessaire.
 Affichage des résultats : À la fin du scrutin, les résultats sont visibles pour tous les votants et organisateurs, avec un calcul des pourcentages et des votes absolus.
 Technologies Utilisées
-**Langages** : PHP, JavaScript, HTML, CSS
-**Outils$$ : MAMP pour l’environnement de développement local, jQuery/AJAX pour les interactions dynamiques, JSON pour le stockage des données
-**Bibliothèques** : Bootstrap pour le design, JSEncrypt pour l'encryption (option bonus)
+- **Langages** : PHP, JavaScript, HTML, CSS
+- **Outils** : MAMP pour l’environnement de développement local, jQuery/AJAX pour les interactions dynamiques, JSON pour le stockage des données
+- **Bibliothèques** : Bootstrap pour le design, JSEncrypt pour l'encryption (option bonus)
 
 ## Organisation du Code
 Le projet est structuré de manière à assurer une modularité et une maintenance optimales :
@@ -45,7 +45,8 @@ En tant que plateforme évolutive, Aghavote pourrait inclure les extensions suiv
 - Vote préférentiel : Permettre aux votants de classer les options par ordre de préférence
 - Calendrier de sélection : Affichage des options de vote sous forme de plages horaires, façon Doodle
 - Encryption des votes : Utilisation de JSEncrypt pour sécuriser les votes et assurer la confidentialité
--
+
+
 ## Auteur
 Chloé Makoundou
 
