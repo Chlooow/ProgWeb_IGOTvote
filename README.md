@@ -1,4 +1,4 @@
-# Aghavote
+# IGOTvote
 Aghavote est une plateforme de vote en ligne permettant de gérer des scrutins de manière simple et efficace. Inspirée par les plateformes de vote telles que Belenios et Balotilo, Aghavote permet aux organisateurs de créer des votes en ligne sécurisés et anonymes, tout en facilitant la gestion des procurations et le suivi de la participation.
 
 ## Objectif
