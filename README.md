@@ -25,19 +25,19 @@ Technologies Utilisées
 Le projet est structuré de manière à assurer une modularité et une maintenance optimales :
 
 **Pages principales** :
-**index.php** : Page de connexion/inscription
-**PageChoix.php** : Interface de navigation vers les différentes sections
-**votingPage.php** : Page de vote et affichage des résultats
-**createScrutin.php et gererScrutin.php **: Création et gestion des scrutins par l'organisateur
+- **index.php** : Page de connexion/inscription
+- **PageChoix.php** : Interface de navigation vers les différentes sections
+- **votingPage.php** : Page de vote et affichage des résultats
+- **createScrutin.php et gererScrutin.php**: Création et gestion des scrutins par l'organisateur
 
 #### Répertoires :
-**assets/** : Logos et images de la plateforme
-**data/** : Fichiers de données (JSON)
-**styles/** : Feuilles de style CSS pour le design de l’interface
+- **assets/** : Logos et images de la plateforme
+- **data/** : Fichiers de données (JSON)
+- **styles/** : Feuilles de style CSS pour le design de l’interface
 
 ## Problèmes Rencontrés
-**Problèmes de session** : Certaines erreurs dans le passage des données d'une session à une autre ont été identifiées.
-**Gestion des appels AJAX** : Quelques difficultés liées aux URLs et à la gestion des réponses vides ont été rencontrées, nécessitant des ajustements de code.
+- **Problèmes de session** : Certaines erreurs dans le passage des données d'une session à une autre ont été identifiées.
+- **Gestion des appels AJAX** : Quelques difficultés liées aux URLs et à la gestion des réponses vides ont été rencontrées, nécessitant des ajustements de code.
 
 ## Extensions Futures
 En tant que plateforme évolutive, Aghavote pourrait inclure les extensions suivantes :
