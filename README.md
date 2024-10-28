@@ -1,106 +1,53 @@
-# ProgWeb_Ahgavote
-Projet Programmation web - 2023 / 2024 - système de vote
-https://codimd.math.cnrs.fr/__PaSu03RrucOY4oneaw0Q?edit
+# Aghavote
+Aghavote est une plateforme de vote en ligne permettant de gérer des scrutins de manière simple et efficace. Inspirée par les plateformes de vote telles que Belenios et Balotilo, Aghavote permet aux organisateurs de créer des votes en ligne sécurisés et anonymes, tout en facilitant la gestion des procurations et le suivi de la participation.
 
-# Projet ProgWeb 2024 - AHGAVOTE
+## Objectif
+L’objectif de ce projet est de fournir une solution complète de gestion de scrutins, adaptée aux besoins de divers groupes, notamment les étudiants. Aghavote assure un environnement de vote structuré où :
 
-## Pourcentage
+Les votants et organisateurs sont authentifiés, mais les votes sont anonymes.
+La gestion des procurations est intégrée, permettant de déléguer un vote avec des consignes spécifiques.
+Les résultats sont présentés de manière claire et transparente pour tous les participants à la clôture des votes.
 
-> [60%]
+## Fonctionnalités Principales
+Aghavote inclut les fonctionnalités suivantes :
 
-### Page d'accueil
+**Authentification des utilisateurs** : Les organisateurs et votants s’authentifient via un login et un mot de passe.
+**Création et gestion de scrutins** : L’organisateur peut créer des questions de vote avec plusieurs options de réponse, gérer la liste des votants, et assigner des procurations.
+**Vote anonyme** : Les votes sont anonymes et sécurisés ; la liste des personnes ayant voté est tenue secrète.
+**Gestion des procurations** : Les votants peuvent déléguer leur droit de vote, avec des consignes spécifiques si nécessaire.
+Affichage des résultats : À la fin du scrutin, les résultats sont visibles pour tous les votants et organisateurs, avec un calcul des pourcentages et des votes absolus.
+Technologies Utilisées
+**Langages** : PHP, JavaScript, HTML, CSS
+**Outils$$ : MAMP pour l’environnement de développement local, jQuery/AJAX pour les interactions dynamiques, JSON pour le stockage des données
+**Bibliothèques** : Bootstrap pour le design, JSEncrypt pour l'encryption (option bonus)
 
-- [x] Présentation
-- [x] Lien vers login
+## Organisation du Code
+Le projet est structuré de manière à assurer une modularité et une maintenance optimales :
 
-### Login
-- [x] Username
-- [x] Password
-- [ ] pas de compte sign up
-- [x] bouton login
-- [ ] le compte n'existe pas
+**Pages principales** :
+**index.php** : Page de connexion/inscription
+**PageChoix.php** : Interface de navigation vers les différentes sections
+**votingPage.php** : Page de vote et affichage des résultats
+**createScrutin.php et gererScrutin.php **: Création et gestion des scrutins par l'organisateur
 
-### Sign Up
-- [x] Username
-- [x] Password
-- [x] Confirm password
-- [x] deja un compte ? login
-- [x] bouton sign up
-- [x] e-mail
-- [x] le compte crée existe deja
-- [x] json des inscrits
+#### Répertoires :
+**assets/** : Logos et images de la plateforme
+**data/** : Fichiers de données (JSON)
+**styles/** : Feuilles de style CSS pour le design de l’interface
 
-### Que voulez-vous faire
-- [x] Crée un scrutin
-- [ ] Gérer un scrutin existant
-- [x] voter
-- [x] deconnexion
+## Problèmes Rencontrés
+**Problèmes de session** : Certaines erreurs dans le passage des données d'une session à une autre ont été identifiées.
+**Gestion des appels AJAX** : Quelques difficultés liées aux URLs et à la gestion des réponses vides ont été rencontrées, nécessitant des ajustements de code.
 
-### Crée un scrutin
-- [x] Numéro du scrutin
-- [x] L'organisateur
-- [x] titre
-- [x] question
-- [x] options
-- [x] intitulé des options
-- [x] liste des users
-- [x] ceux qui peuvent voter
-- [x] ceux qui ont deja voté
-- [ ] procurations (0, 1 ou 2 fois)
-- [x] btn crée un scrutin
-- [ ] fermer un scrutin
-- [ ] résultats
-- [ ] détruire le scrutin
-- [x] btn back
-- [ ] le taux de participation
-- [ ] json des scrutins
+## Extensions Futures
+En tant que plateforme évolutive, Aghavote pourrait inclure les extensions suivantes :
 
+- Vote préférentiel : Permettre aux votants de classer les options par ordre de préférence
+- Calendrier de sélection : Affichage des options de vote sous forme de plages horaires, façon Doodle
+- Encryption des votes : Utilisation de JSEncrypt pour sécuriser les votes et assurer la confidentialité
+-
+## Auteur
+Chloé Makoundou
 
-- [ ] gérer un scrutin existant
-
-### page de voting
-- [ ] Voter
-- [ ] transmettre les résultats
-- [ ] Encrypter les votes
-- [x] retourner en arrière
-
-### Bonus page de procuration
-- [ ] liste des personnes ayant un compte
-- [ ] la personne qui donne procuration
-- [ ] je donne la procuration à...
-________
-
-### A FAIRE 28/03
-- [ ] Détruire un scrutin -> marche pas
-- [ ] fermer un scrutin
-- [ ] procuration
-- [ ] Gerer un scrutin existant
-- [x] bouton voter en fonction des users -> ne marche pas
-- [x] donner le nom de l'organisateur dans le JSON
-________
-
-### Cahier des charges du prof
-
-- [ ] Les votants et l’organisateur ne seront pas anonymes (login-mot de passe requis)
-- [ ] Les votes sont anonymes (A la fin on ne sait pas qui a voté quoi)
-- [ ] La liste des personnes ayant votés est semi anonyme. Le système doit garder une liste de personnes ayant voté pour éviter de les laisser voter plus de fois que nécessaire mais la liste n’est pas affichée.
-- [ ] Les votants pourront porter 0, 1 ou 2 procurations. La personne donnant procuration 
-pouvant donner des consignes de vote il conviendra de faire voter 1,2 ou trois fois le votant 
-indépendamment. C’est l’organisateur du vote qui renseigne qui a donné procuration à qui.
-
-- [ ] L’organisateur du vote souhaite gérer des listes de votants afin d’enchainer les scrutins (ie, une liste L3 miage, une liste L3 info, une liste Enseignant-Prog-Web, etc.). C’est dans ces listes de votants qu’il renseigne combien de procuration porte chaque votant (0, 1 ou 2).
-
-Un scrutin sera toujours composé au moins des trois éléments suivant que l’organisateur 
-du scrutin renseignera quand il se sera identifié. 
-
-- [x] Une question
-- [x] Des options (= des choix de réponses à la question)
-- [x] Une liste de votants (chacun avec un nombre 0,1 ou 2 procurations) 
-- [ ] Une liste de votes (liste de bulletins)
-- [ ] Une liste de qui a voté et combien de fois.
-- [ ] Un votant pourra consulter la liste des scrutins dans lesquels il peut voter, voter bien sûr, mais aussi consulter le taux de participation et le nom de l’organisateur. 
-- [ ] L’organisateur pourra aussi consulter le taux de participation et voter aux scrutins dans lesquels il s’inscrit lui-même comme votant.
-- [ ] Quand l’organisateur le décide il peut clore le scrutin
-- [ ] L’organisateur et tous les votants peuvent alors consulter le résultat (nombre absolue et pourcentage obtenus pour chaque option)
-- [ ] Date. Vous pourrez permettre de choisir les options dans un calendrier (dates, plages horaires). Comme le système doodle. Pour l’organisateur comme pour le votant, les plages horaires seront affichées dans un calendrier.
-- [ ] Interface de procuration. Plutôt que de renseigner le nombre de procurations pour chaque votant, l’organisateur du scrutin peut simplement fixer une liste complète à l’avance et les votants peuvent venir à l’avance indiquer qui peut porter leur procuration. Le système prendra la première personne présente dans la liste pour porter la procuration.
+## Licence
+Projet réalisé dans le cadre de l'option Programmation Web à l’Université Paris-Saclay, sous la supervision de Frédéric Vernier.
